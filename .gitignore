@@ -34,3 +34,5 @@
 
 *.swp
 .DS_Store
+/config/database.yml
+.env
