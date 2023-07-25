@@ -27,6 +27,17 @@ services:
     stdin_open: true
     tty: true
 
+  nginx:
+    image: nginx:alpine
+    links:
+      - web:web
+    ports:
+      - 80:80
+    depends_on:
+      - web
+    volumes:
+      - ./docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     links:
