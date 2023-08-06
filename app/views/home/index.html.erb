@@ -1,92 +1,10 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>ApnaTheatre</title>
-  <link rel="shortcut icon" href="assets/Images/Logo/Title.jpeg" type="image/x-icon">
-
-  <!-- Font  -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
-
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-  <link href="./static/style.css" rel="stylesheet" type="text/css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-    integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-
-</head>
-<!------------------------Scroll to top button------------------------------------------------>
-<style>
-  .poster {
-    box-shadow: 0 0 15px red !important;
-
-  }
-  .buddy{
-    cursor: pointer;
-  }
-  #scrollToTopButton {
-    position: fixed;
-    bottom: 40px;
-    right: 25px;
-    font-size: 25px;
-    z-index: 99;
-    width: 50px;
-    height: 50px;
-    background-color: red;
-    color: black;
-    border: none;
-    cursor: pointer;
-    outline: none;
-    padding: 6px;
-    border-radius: 50%;
-  }
-
-  #scrollToTopButton:hover,i:hover {
-      background-color: white;
-      color: red;
-    }
-
-    .navbar-nav{
-      display: flex;
-      align-items: center;
-      padding: 0px 7.5px;
-    }
-
-    .maincontainer h3 {
-      color: white;
-      text-align: center;
-  }
-
-  .container {
-    text-align: center;
-  }
-  #navbarNav.nav-item.nav-link a:hover{
-    color: red;
-  }
-  .nav-link:hover{
-    color: red;
-  }
-  .nav-item :hover{
-    margin-bottom: 10px;
-    /* background-color: aquamarine; */
-    border-bottom: 3px;
-    border-color: red;
-    border-bottom-style: solid;
-  }
-
-  #header-nav .nav-link a:hover{
-    color: red;
-  }
-</style>
+<% content_for :head do %>
+  <link href="assets/static/style.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="assets/static/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/static/style-min.css">
+  <link rel="stylesheet" href="assets/cards.css">
+  <link rel="stylesheet" href="assets/home_style.css">
+<% end %>
 
 <script>
   setTimeout(function () {
@@ -97,7 +15,6 @@
 
 <body>
 <div class="scroll-bar">
-  <%= render "layouts/header" %>
   <marquee>Welcome To <i>Netflix Clone</i><sup>&reg;</sup></marquee>
   <label class="online">Stream Latest Movies Now!</label>
   <div class="buddy">
@@ -177,7 +94,7 @@
       <h3>Hollywood</h3>
       <hr>
       <div class="poster">
-        <div class="flip-card_i">
+        <a href="<%= movie_path 1 %>" class="flip-card_i d-block">
           <div class="flip-card-inner_i">
             <div class="flip-card-front_i">
               <img src="assets/Images/inception.jpg" alt="Avatar" style="width:250px;height:360px;">
@@ -217,7 +134,7 @@
           <div class="flim">
             <b>Inception</b><br>IMDb - 8.8
           </div>
-        </div>
+        </a>
       </div>
 
       <div class="poster">
@@ -2886,4 +2803,3 @@
   </div>
 </div>
 </body>
-</html>

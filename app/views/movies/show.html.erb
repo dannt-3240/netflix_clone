@@ -1,0 +1,248 @@
+<% content_for :head do %>
+  <base href="/">
+  <%= stylesheet_link_tag 'webStyle' %>
+  <link rel="stylesheet" href="/assets/static/bootstrap.min.css">
+  <link rel="stylesheet" href="/assets/static/style-min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+  integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+  crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+<% end %>
+
+<body>
+
+    <div class="custom-container mt-5" style="padding: 0 4rem; max-width: 1800px;">
+      <div class="d-flex">
+        <div class="col-md-3 bg-light">
+          <div id="movie-full-info">
+            <div class="movie-info-poster">
+              <span>
+                <img itemprop="image"
+                  src="https://static.bunnycdn.ru/i/cache/images/1/14/14a0ea926aad5127db5e0ebfc5a9c3e9.jpg"
+                  alt="The Little Mermaid">
+              </span>
+            </div>
+            <div class="info-data">
+              <h1 itemprop="name" class="info-title">The Little Mermaid</h1>
+              <div class="info-subtitle">
+                <span class="sub-quality mini-stt">HD</span>
+                <span class="sub-rating mini-stt">PG</span>
+                <span class="sub-imdb mini-stt">IMDb 7.2</span>
+                <span class="text-white">135 min</span>
+              </div>
+              <div class="description cts-wrapper">
+                <div class="cts-block short" data-name="short">
+                  <div>A young mermaid makes a deal with a sea witch to trade her beautiful voice for human legs so she
+                    can discover the world above water and impress a prince.</div> <button
+                    class="btn btn-sm btn-dark desc-btn mt-2 cts-switcher" data-target="full">view all <i
+                      class="bi bi-arrow-right-short"></i></button>
+                </div>
+                <div class="cts-block" data-name="full" style="display:none">
+                  <div>A young mermaid makes a deal with a sea witch to trade her beautiful voice for human legs so she
+                    can discover the world above water and impress a prince.</div> <button
+                    class="btn btn-sm btn-secondary1 desc-btn mt-2 cts-switcher" data-target="short"><i
+                      class="bi bi-arrow-left-short"></i> view less</button>
+                </div>
+              </div>
+              <div class="meta">
+                <div>
+                  <div>Type:</div>
+                  <span> <a href="movie">Movie</a> </span>
+                </div>
+                <div>
+                  <div>Country:</div>
+                  <span> <a href="/country/united-states" title="United States Movies, TV-Shows">United States</a>
+                  </span>
+                </div>
+                <div>
+                  <div>Genre:</div>
+                  <span>
+                    <a href="/genre/adventure" title="Adventure Movies, TV-Shows">Adventure</a>,
+                    <a href="/genre/fantasy" title="Fantasy Movies, TV-Shows">Fantasy</a>,
+                    <a href="/genre/family" title="Family Movies, TV-Shows">Family</a>
+                  </span>
+                </div>
+                <div>
+                  <div>Release:</div> <span itemprop="dateCreated">May 26, 2023</span>
+                </div>
+                <div>
+                  <div>Director:</div>
+                  <span>
+                    <a itemprop="director" itemscope="" itemtype="https://schema.org/Person"
+                      href="/director/rob-marshall">
+                      <span itemprop="name">Rob Marshall</span>
+                    </a>
+                  </span>
+                </div>
+                <div>
+                  <div>Production:</div>
+                  <span>
+                    <a href="/production/walt-disney-pictures">Walt Disney Pictures</a>,
+                    <a href="/production/marc-platt-productions">Marc Platt Productions</a>,
+                    <a href="/production/lucamar-productions">Lucamar Productions</a>
+                  </span>
+                </div>
+                <div>
+                  <div>Cast:</div>
+                  <span>
+                    <a href="/star/melissa-mccarthy">Melissa Mccarthy</a>,
+                    <a href="/star/jonah-hauer-king2">Jonah Hauer-King</a>,
+                    <a href="/star/halle-bailey">Halle Bailey</a>
+                  </span>
+                </div>
+              </div>
+              <div class="rating-box" itemprop="aggregateRating" itemscope=""
+                itemtype="https://schema.org/AggregateRating" data-id="66937" data-score="6.47"> <span class="stars">
+                  <span class="active"><i class="bi bi-star-fill"></i></span> <span class="active"><i
+                      class="bi bi-star-fill"></i></span> <span class="active"><i class="bi bi-star-fill"></i></span>
+                  <span class="active"><i class="bi bi-star-fill"></i></span> <span class="active"><i
+                      class="bi bi-star-fill"></i></span> </span>
+                <div class="score live-label"> <span><b itemprop="ratingValue">6.47</b> of <b
+                      itemprop="bestRating">10</b></span> <span>(<span itemprop="reviewCount"
+                      style="display:none">4400</span>4,400 reviews)</span> </div>
+              </div>
+              <div class="sharing">
+                <div
+                  class="sharethis-inline-share-buttons mt-4 st-left st-has-labels  st-inline-share-buttons st-animated"
+                  data-url="https://flixtor.video/movie/the-little-mermaid2-zk9wl" id="st-1">
+                  <div class="st-total ">
+                    <span class="st-label">20</span>
+                    <span class="st-shares">
+                      Shares
+                    </span>
+                  </div>
+                  <div class="st-btn st-first st-hide-label  st-remove-label" data-network="facebook"
+                    style="display: inline-block;">
+                    <img alt="facebook sharing button" src="https://platform-cdn.sharethis.com/img/facebook.svg">
+                    <span class="st-label"></span>
+                  </div>
+                  <div class="st-btn st-hide-label  st-remove-label" data-network="twitter"
+                    style="display: inline-block;">
+                    <img alt="twitter sharing button" src="https://platform-cdn.sharethis.com/img/twitter.svg">
+                    <span class="st-label"></span>
+                  </div>
+                  <div class="st-btn st-hide-label  st-remove-label" data-network="messenger"
+                    style="display: inline-block;">
+                    <img alt="messenger sharing button" src="https://platform-cdn.sharethis.com/img/messenger.svg">
+                    <span class="st-label"></span>
+                  </div>
+                  <div class="st-btn st-hide-label  st-remove-label" data-network="reddit"
+                    style="display: inline-block;">
+                    <img alt="reddit sharing button" src="https://platform-cdn.sharethis.com/img/reddit.svg">
+                    <span class="st-label"></span>
+                  </div>
+                  <div class="st-btn st-hide-label  st-remove-label" data-network="whatsapp" style="display: none;">
+                    <img alt="whatsapp sharing button" src="https://platform-cdn.sharethis.com/img/whatsapp.svg">
+                    <span class="st-label"></span>
+                  </div>
+                  <div class="st-btn st-last st-hide-label  st-remove-label" data-network="telegram"
+                    style="display: none;">
+                    <img alt="telegram sharing button" src="https://platform-cdn.sharethis.com/img/telegram.svg">
+                    <span class="st-label"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-md-9 bg-light content-main">
+          <div class="signature-bg overflow-hidden_">
+            <div id="movie-player" class="no-player playable">
+              <div class="movie-player-wrap">
+                <div
+                  class="player-bg https://static.bunnycdn.ru/i/cache/images/f/fd/fd26186908ecbc9c343d587893f8b47b.jpg"
+                  style="background-image: url(https://static.bunnycdn.ru/i/cache/images/f/fd/fd26186908ecbc9c343d587893f8b47b.jpg)">
+                </div>
+                <div id="player">
+                  <div class="btn-play"><i class="bi bi-play-fill"></i></div>
+                </div>
+              </div>
+              <div id="movie-ctrls">
+                <div class="movie-ctrls-wrap">
+                  <div class="movie-ctrl auto-play" data-name="auto_play" data-persist="true" data-default="0"
+                    data-off="<i class='bi bi-square-fill'></i> Auto Play"
+                    data-on="<i class='bi bi-check-square-fill'></i> Auto Play"><i class="bi bi-square-fill"></i> Auto
+                    Play</div>
+                  <div class="movie-ctrl auto-next" data-name="auto_next" data-persist="true" data-default="1"
+                    data-off="<i class='bi bi-square-fill'></i> Auto Next"
+                    data-on="<i class='bi bi-check-square-fill'></i> Auto Next"><i class="bi bi-square-fill"></i> Auto
+                    Next</div>
+                  <div class="movie-ctrl auto-skip" data-name="auto_skip_intro" data-persist="true" data-default="0"
+                    data-off="<i class='bi bi-square-fill'></i> Auto Skip"
+                    data-on="<i class='bi bi-check-square-fill'></i> Auto Skip"><i class="bi bi-square-fill"></i> Auto
+                    Skip</div>
+                  <div class="skiptime dropdown" style="display:none" data-toggle="tooltip" data-placement="top"
+                    title=""
+                    data-original-title="Please help us by contributing time to skip the intro, outro. HOW TO: Click to an input field, then seek the video to the correct position, the time will automatic filled to the field, then submit the form. HOW IT WORKS: The system will automatic skip the video from [BEGIN] to [END].">
+                    <div class="movie-ctrl" data-toggle="dropdown" data-placeholder="false"> <i
+                        class="bi bi-stopwatch-fill"></i> Set skip time</div>
+                    <ul class="dropdown-menu noclose">
+                      <li>
+                        <div class="input">
+                          <div class="intro block">
+                            <div class="line"><i></i></div>
+                            <div class="group begin"> <label>Intro begin</label> <input type="text" name="intro_begin"
+                                class="form-control form-control-sm" placeholder="00:00:00" autocomplete="off"> </div>
+                            <div class="group end"> <label>Intro end</label> <input type="text" name="intro_end"
+                                class="form-control form-control-sm" placeholder="00:00:00" autocomplete="off"> </div>
+                          </div>
+                          <div class="outro block">
+                            <div class="line"><i></i></div>
+                            <div class="group begin"> <label>Outro begin</label> <input type="text" name="outro_begin"
+                                class="form-control form-control-sm" placeholder="00:00:00" autocomplete="off"> </div>
+                            <div class="group end"> <label>Outro end</label> <input type="text" name="outro_end"
+                                class="form-control form-control-sm" placeholder="00:00:00" autocomplete="off"> </div>
+                          </div>
+                          <div class="submit"> <button class="btn btn-sm mt-2 btn-primary w-100" type="button"><i
+                                class="mdi mdi-handshake-outline"></i> Contribute</button> </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="light movie-ctrl"><i class="bi bi-lightbulb-fill"></i> <span>Light</span></div>
+                  <div class="dropdown user-bookmark" data-id="66937" data-fetch="true">
+                    <div class="movie-ctrl" data-toggle="dropdown" data-placeholder="false"
+                      data-add="<i class=&quot;bi bi-bookmark-fill&quot;></i> <span>Add Bookmark</span>"
+                      data-edit="<i class=&quot;bi bi-bookmark-fill&quot;></i> <span>Edit Bookmark</span>"><i
+                        class="bi bi-bookmark-fill"></i> <span>Add Bookmark</span></div>
+                    <div class="dropdown-menu dropdown-menu-right folders"></div>
+                  </div>
+                  <div class="movie-ctrl" data-toggle="modal" data-target="#report"><i
+                      class="bi bi-exclamation-square-fill"></i> <span>Report</span></div>
+                </div>
+              </div>
+              <div id="movie-clouds">
+                <div class="text-center movie-cloud-notice mb-2"> If current server doesn't work please try other
+                  servers below. </div>
+                <div class="movie-clouds-wrap">
+                  <div class="movie-cloud active" data-id="41" data-link-id="1936927">
+                    <div><span><i class="bi bi-cloud"></i> server</span> <span>Vidstream</span> </div>
+                  </div>
+                  <div class="movie-cloud" data-id="28" data-link-id="1936926">
+                    <div><span><i class="bi bi-cloud"></i> server</span> <span>MyCloud</span> </div>
+                  </div>
+                  <div class="movie-cloud" data-id="45" data-link-id="1936929">
+                    <div><span><i class="bi bi-cloud"></i> server</span> <span>Filemoon</span> </div>
+                  </div>
+                  <div class="movie-cloud" data-id="40" data-link-id="1936930">
+                    <div><span><i class="bi bi-cloud"></i> server</span> <span>Streamtape</span> </div>
+                  </div>
+                </div>
+              </div>
+              <div id="movie-episode" class="movie">
+                <div class="episode-top">
+                  <div class="episode-top-title"><i class="bi bi-film"></i> Movie files</div>
+                </div>
+                <div class="episode-range" style="display: block" data-season="1">
+                  <div> <a href="/movie/the-little-mermaid2-zk9wl/1-1" data-id="311406" data-num="1" data-slug="1"
+                      title="Episode 1" class="active"> <span>Movie 1</span> </a> </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+</body>

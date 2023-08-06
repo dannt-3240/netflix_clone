@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root 'static_pages#home'
   resources :home, only: %i[index]
-  resources :movies, only: %i[index]
+  resources :movies, only: %i[index show]
   resources :web_series, only: %i[index]
   resources :premium, only: %i[index]
   resources :contact, only: %i[index]
