@@ -8,12 +8,12 @@ default: &default
 
 development:
   <<: *default
-  database: rails-docker-app_development
+  database: netflix-clone-app_development
 test:
   <<: *default
-  database: rails-docker-app_test
+  database: netflix-clone_test
 production:
   <<: *default
-  database: rails-docker-app_production
-  username: rails-docker-app
+  database: netflix-clone_production
+  username: netflix-clone
   password: <%= ENV["DATABASE_PASSWORD"] %>
