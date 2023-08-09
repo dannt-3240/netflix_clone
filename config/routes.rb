@@ -10,4 +10,8 @@ Rails.application.routes.draw do
   resources :contact, only: %i[index]
   get "/login", to: "users#login"
   get "/signup", to: "users#signup"
+  namespace :admin do
+    get "/home", to: "static_pages#home"
+    resources :movies, only: %i[new create]
+  end
 end
