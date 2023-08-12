@@ -1,0 +1,94 @@
+
+<body>
+  <div class="logo">
+    <a href="home.html">
+      <img src="assets/Images/TheaterLogoFinal.png" class="img-logo" />
+    </a>
+  </div>
+  <div class="login-div">
+    <form class="login" onsubmit="return DisplayResults()" name="regform" autocomplete="off">
+      <h1 class="sign">Sign Up</h1>
+      <div id="errormessage"></div>
+      <span class="seperator"></span>
+      <div class="input-text">
+        <input type="text" name="name" placeholder="Enter your name" oninput="change()" />
+      </div>
+      <div class="input-text">
+        <input type="email" name="email" placeholder="Enter your Email" oninput="change()" />
+      </div>
+      <div class="input-text">
+        <input id="pass_signup" type="password" name="password" placeholder="Enter your password"
+          oninput="change()" /><i class="fa fa-fw fa-eye field-icon toggle-password" id="togglePassword"></i>
+      </div>
+      <div class="input-text">
+        <input id="pass_signup2" type="password" name="retypepassword" placeholder="Confirm password"
+          oninput="change()" /><i class="fa fa-fw fa-eye field-icon toggle-password2" id="togglePassword"></i>
+      </div>
+      <input class="signin-button" type="submit" value="Sign Up" />
+      <div class="remember-flex">
+
+      </div>
+      <div class="help">
+        <a class="color_text" href="https://www.google.com/gmail/">Need help?</a>
+      </div>
+    </form>
+    <div class="protection color_link help" style="margin: 0px 30%;">
+      This page is protected by Google reCAPTCHA to ensure you're not a bot. <a href="#">Learn more.</a>
+    </div>
+    <span class="seperator"></span>
+    <form style="opacity: 0;" class="aftersubmit" onsubmit="return FinalResults()" name="verificationform"
+      autocomplete="off">
+      <hr>
+      <div class="input-text">
+        <input type="password" name="code" placeholder="Enter code" oninput="change()" />
+      </div>
+      <input class="signin-button" type="submit" value="Register" />
+    </form>
+
+    <br>
+    <br>
+
+  </div>
+  <div class="bottom">
+    <div class="bottom-width">
+      <div class="questions">
+        <span> Questions? <br>Ask on : <a href="mailto: Apna_theatre@gmail.com"
+            class="tel-link">Apna_theatre@gmail.com</a></span>
+        <select class="fa select-language">
+          <option> &#xf0ac; &nbsp;&nbsp;&nbsp;English</option>
+          <option> &#xf0ac; &nbsp;&nbsp;&nbsp;Hindi</option>
+        </select>
+      </div>
+
+      <div>
+        <ul class="bottom-flex">
+          <li class="list-bottom">
+            <a href="faq.html" class="link-bottom">
+              FAQ
+            </a>
+          </li>
+          <li class="list-bottom">
+            <a href="#" class="link-bottom">
+              Help Center
+            </a>
+          </li>
+          <li class="list-bottom">
+            <a href="#" class="link-bottom">
+              Terms of Use
+            </a>
+          </li>
+          <li class="list-bottom">
+            <a href="#" class="link-bottom">
+              Privacy
+            </a>
+          </li>
+
+        </ul>
+      </div>
+
+    </div>
+  </div>
+  <button id="scrollToTopButton" title="Go to top" class="ml-5">
+    <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+  </button>
+<script src="https://smtpjs.com/v3/smtp.js"></script>
