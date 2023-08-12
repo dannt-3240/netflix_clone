@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_29_080534) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_12_160231) do
   create_table "actors", charset: "utf8mb3", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -26,26 +26,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_29_080534) do
     t.index ["movie_id"], name: "index_castings_on_movie_id"
   end
 
-  create_table "comments", charset: "utf8mb3", force: :cascade do |t|
-    t.bigint "movie_id"
-    t.bigint "user_id"
-    t.string "title"
-    t.integer "rating"
-    t.string "text"
-    t.date "post_date"
-    t.integer "liked"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["movie_id"], name: "index_comments_on_movie_id"
-    t.index ["user_id"], name: "index_comments_on_user_id"
-  end
-
   create_table "genres", charset: "utf8mb3", force: :cascade do |t|
-    t.bigint "movie_id"
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["movie_id"], name: "index_genres_on_movie_id"
   end
 
   create_table "list_items", charset: "utf8mb3", force: :cascade do |t|
@@ -69,19 +53,26 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_29_080534) do
     t.index ["user_id"], name: "index_lists_on_user_id"
   end
 
+  create_table "movie_genres", charset: "utf8mb3", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "movies", charset: "utf8mb3", force: :cascade do |t|
     t.string "name"
     t.string "description"
     t.float "imdb"
     t.float "rating"
     t.string "poster"
+    t.string "thumbnail"
     t.integer "liked"
     t.integer "watched"
-    t.integer "running_time"
+    t.integer "duration"
     t.string "country"
     t.integer "release_year"
     t.string "video_url"
     t.integer "rank"
+    t.integer "movie_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -94,6 +85,34 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_29_080534) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_notifications_on_user_id"
+  end
+
+  create_table "ratings", charset: "utf8mb3", force: :cascade do |t|
+    t.bigint "movie_id"
+    t.bigint "user_id"
+    t.integer "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["movie_id"], name: "index_ratings_on_movie_id"
+    t.index ["user_id"], name: "index_ratings_on_user_id"
+  end
+
+  create_table "reviews", charset: "utf8mb3", force: :cascade do |t|
+    t.bigint "movie_id"
+    t.bigint "user_id"
+    t.string "title"
+    t.string "text"
+    t.date "post_date"
+    t.integer "liked"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["movie_id"], name: "index_reviews_on_movie_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
+  create_table "tv_episodes", charset: "utf8mb3", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "user_movie_watchlists", charset: "utf8mb3", force: :cascade do |t|
@@ -112,14 +131,23 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_29_080534) do
     t.string "password_digest"
     t.integer "role"
     t.integer "rank"
-    t.string "ip"
-    t.boolean "locked"
-    t.boolean "logged"
-    t.date "lastlogin"
-    t.integer "likes"
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.integer "failed_attempts", default: 0, null: false
+    t.string "unlock_token"
+    t.datetime "locked_at"
     t.integer "coins"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
 end

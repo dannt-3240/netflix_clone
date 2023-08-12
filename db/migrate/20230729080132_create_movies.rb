@@ -6,13 +6,15 @@ class CreateMovies < ActiveRecord::Migration[7.0]
       t.float :imdb
       t.float :rating
       t.string :poster
+      t.string :thumbnail
       t.integer :liked
       t.integer :watched
-      t.integer :running_time
+      t.integer :duration
       t.string :country
       t.integer :release_year
       t.string :video_url
       t.integer :rank
+      t.integer :movie_type
 
       t.timestamps
     end
