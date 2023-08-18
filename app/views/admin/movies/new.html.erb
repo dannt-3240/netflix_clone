@@ -1,0 +1,77 @@
+<div class="container-fluid">
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Create new movie</h1>
+  </div>
+  <%= form_for [:admin, @movie] do |f| %>
+    <div class="form-group">
+      <label for="inputAddress2">MovieType</label>
+      <select id="inputState" class="form-control">
+        <option selected>Single Movie</option>
+        <option>TV Series</option>
+      </select>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputEmail4">Name</label>
+        <%= f.text_field :name, class: "form-control", id: "inputEmail4", placeholder: "enter movie name here ..." %>
+      </div>
+      <div class="form-group col-md-3">
+        <label for="inputPassword4">Duration</label>
+        <%= f.text_field :duration, class: "form-control", id: "inputEmail4", placeholder: "Duration" %>
+      </div>
+      <div class="form-group col-md-3">
+        <label for="inputPassword4">Release year</label>
+        <%= f.text_field :release_year, class: "form-control", id: "inputEmail4", placeholder: "Release year" %>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputCity">actor</label>
+        <select id="inputState" class="form-control">
+          <option selected>Choose Actor</option>
+          <option>Actor1</option>
+          <option>Actor2</option>
+        </select>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="inputState">Genres</label>
+        <select id="inputState" class="form-control">
+          <option selected>Choose genres</option>
+          <option>Action</option>
+          <option>Drama</option>
+        </select>
+      </div>
+      <div class="form-group col-md-2">
+        <label for="inputZip">IMDB</label>
+        <input type="text" class="form-control" id="inputZip">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputAddress">Description</label>
+      <textarea class="form-control" id="validationTextarea" placeholder="Required example textarea"></textarea>
+      <div class="invalid-feedback">
+        Please enter a message in the textarea.
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputEmail4">Poster</label>
+        <input type="file" class="form-control" id="inputEmail4">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputPassword4">Thumbnail</label>
+        <input type="file" class="form-control" id="inputPassword4">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="inputAddress2">Upload Poster</label>
+      <%= f.file_field :poster, class: "form-control" %>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Sign in</button>
+  <% end %>
+</div>

@@ -38,13 +38,14 @@ gem "redis", "~> 4.0"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
-
+gem 'pry-rails'
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
-
 # Use Sass to process CSS
 # gem "sassc-rails"
-
+gem 'google-api-client', '~> 0.11'
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 

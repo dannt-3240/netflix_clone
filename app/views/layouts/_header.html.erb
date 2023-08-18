@@ -1,0 +1,126 @@
+<style>
+  .topbar-divider {
+  width: 0;
+  border-right: 1px solid #e3e6f0;
+  height: 2rem;
+  margin: auto 1rem;
+  }
+
+  .img-profile {
+    height: 2rem;
+    width: 2rem;
+  }
+
+  .dropdown.no-arrow .dropdown-toggle::after {
+  display: none;
+  }
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-dark" id="header-nav">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="<%= home_index_path %>"><img class="logo" src="assets/Images/TheaterLogoFinal.png"
+        alt="" width="30" height="24"></a>
+    <button id="nav" class="navbar-toggler" id="nav" style="background-color:#8b0000" type="button"
+      data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon" style="background-color:dark-grey;"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item ">
+          <a class="nav-link active s" aria-current="page" href="<%= home_index_path %>"
+            onMouseOver="this.style.color='red'" onMouseOut="this.style.color='white'">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="<%= movies_path %>" onMouseOver="this.style.color='red'"
+            onMouseOut="this.style.color='white'">Movies</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="<%= web_series_index_path %>" onMouseOver="this.style.color='red'"
+            onMouseOut="this.style.color='white'">Web Series</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="tv.html" onMouseOver="this.style.color='red'"
+            onMouseOut="this.style.color='white'">TV</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<%= premium_index_path %>" onMouseOver="this.style.color='red'"
+            onMouseOut="this.style.color='white'">Premium</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="<%= contact_index_path %>" onMouseOver="this.style.color='red'"
+            onMouseOut="this.style.color='white'">Contact Us</a>
+        </li>
+        <li>
+          <!-- Genre dropdown starts-->
+          <div>
+            <div class="dropdown"
+              style="position: relative; disPlay: inline-block; padding-top: 5px; padding-left: 15px;">
+              <button class="btn btn-outline-danger dropdown-toggle" type="button" id="dropdownMenuButton"
+                style="font-size:20px;">
+                Genres
+              </button>
+              <div class="dropdown-content" style="color: white;">
+                <a href="popular.html">Popular</a>
+                <a href="crime.html">Crime</a>
+                <a href="suspense.html">Suspense & Thriller</a>
+                <a href="action.html">Action</a>
+                <a href="fantasy.html">Sci-Fi & Fantasy</a>
+                <a href="documentary.html">Documentary</a>
+                <a href="horror.html">Horror</a>
+                <a href="drama.html">Drama</a>
+                <a href="war.html">War & Politics</a>
+                <a href="comedy.html">Comedy</a>
+                <a href="romance.html">Romance</a>
+                <a href="anime.html">Anime</a>
+              </div>
+            </div>
+          </div>
+          <!-- Genre dropdown ends-->
+        </li>
+      </ul>
+      <div class="search-form nav-link">
+        <form id="searchForm" class="d-flex">
+          <input class="form-control me-2" type="text" id="searchText" placeholder="Search" aria-label="Search">
+          <button class="btn btn-danger" type="submit">Search</button>
+        </form>
+      </div>
+
+
+      <div class="topbar-divider d-sm-block"></div>
+      <div class="user-content">
+        <li class="nav-item-new dropdown no-arrow list-unstyled">
+          <a class="nav-link dropdown-toggle" style="margin-left: 0;" href="#" id="userDropdown" role="button"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+              <img class="img-profile rounded-circle"
+                  src="/assets/img/undraw_profile.svg">
+          </a>
+          <!-- Dropdown - User Information -->
+          <div class=" dropdown-content" style="width: 100%;"
+              aria-labelledby="userDropdown">
+              <a class="dropdown-item" href="#">
+                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Profile
+              </a>
+              <a class="dropdown-item" href="#">
+                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Settings
+              </a>
+              <a class="dropdown-item" href="#">
+                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Activity Log
+              </a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="/" data-toggle="modal" data-target="#logoutModal">
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Logout
+              </a>
+          </div>
+      </li>
+      </div>
+    </div>
+  </div>
+</nav>

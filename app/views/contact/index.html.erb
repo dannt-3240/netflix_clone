@@ -1,0 +1,191 @@
+
+<% content_for :head do %>
+  <link rel="stylesheet" href="assets/static/style.css">
+  <link rel="stylesheet" href="assets/contact_style.css">
+<% end %>
+
+<body>
+
+
+  <div class="scroll-bar">
+    <!-- navbar ends -->
+
+    <div class="container">
+      <div id="movies" class="row"></div>
+    </div>
+    <hr>
+
+
+    <div class="box">
+
+      <div class="text">
+        <h1>Contact <span class="red">Us</span></h1>
+        <div class="redline"></div>
+        <p>Have Questions ? We have answers ( may be )</p>
+      </div>
+    </div>
+
+    <div class="touch">
+      <h2>Get in touch</h2>
+      <div class="redline"></div>
+    </div>
+    <div class="container fill">
+      <div class="forthis">
+        <form action="https://formcarry.com/s/S1peCWurw0C" method="POST" name="contact-form" id="contact-form"
+          onsubmit="return validateForm();">
+          <div class="form-row two2">
+            <div class="form-group col-md-6 column">
+              <input type="text" class="form-control input" id="firstname" name="firstname" placeholder=" ">
+              <label for="firstname" class="">First Name</label>
+              <div class="underline">
+              </div>
+            </div>
+            <div class="form-group col-md-6 column">
+              <input type="text" class="form-control input" id="lastname" name="lastname" placeholder=" ">
+              <label for="lastname" class="">Last Name</label>
+              <div class="underline"></div>
+            </div>
+          </div>
+          <div class="form-row one1">
+            <div class="form-group col-lg-6 column">
+              <input type="text" class="form-control input" id="email" name="email" placeholder=" ">
+              <label for="email" class="">Email</label>
+              <div class="underline"></div>
+            </div>
+            <div class="form-group col-lg-6 column">
+              <input type="text" class="form-control input" id="phone" name="phone" placeholder=" ">
+              <label for="number" class="">Phone Number</label>
+              <div class="underline"></div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group column">
+              <input type="text" class="form-control input" name="subject" id="subject" placeholder=" ">
+              <label for="subject" class="">Subject</label>
+              <div class="underline extra"></div>
+            </div>
+          </div>
+          <div class="form-row size">
+            <div class="form-group column">
+              <textarea type="text" class="form-control input" name="message" id="message" rows="5"
+                placeholder=" "></textarea>
+              <label for="message" class="">Message</label>
+              <div class="underline extra gap"></div>
+            </div>
+          </div>
+          <div class="btn-sm">
+            <input type="submit" value="SEND MESSAGE" class="sm-button" id="submit-btn">
+            <a href="#" onclick="clearFunc()">Reset</a>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- address -->
+
+    <div class="container address">
+      <div class="row add-row">
+        <div class="col-sm-6">
+          <h3>Our Address</h3>
+          <div class="redline-address"></div>
+          <p>13 B</p>
+          <p>King Koti Road</p>
+          <p>Vadodara,</p>
+          <p>Gujrat - 500029</p>
+          <div class="phone-e">
+            <p><span class="glyphicon glyphicon-envelope"> </span> info@movie-website.com</p>
+            <p><span class="glyphicon glyphicon-phone"></span> +91-97427 66666</p>
+          </div>
+        </div>
+        <div class="col-sm-6 map-padd">
+          <!-- -map- -->
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.019213593812!2d77.62060731482127!3d12.906485990898592!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae14eed2a26dbb%3A0x98f64960052a26b0!2sTrainingMug!5e0!3m2!1sen!2sin!4v1504259922701"
+            width="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- offcanva JS and footer js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="https://daniellaharel.com/raindrops/js/raindrops.js"></script>
+
+    <div class="bottom-gap"></div>
+
+
+
+    <!-------------------------------Footer-------------------------------->
+
+
+    <script type="text/javascript">
+
+      function validateForm() {
+        const firstname = document.getElementById("firstname");
+        const lastname = document.getElementById("lastname");
+        const email = document.getElementById("email");
+        const phone = document.getElementById("phone");
+        const subject = document.getElementById("subject");
+        const message = document.getElementById("message");
+        let alphabets = /^[A-Za-z]+$/;
+        if (firstname.value.trim().length === 0 && lastname.value.trim().length === 0 && email.value.trim().length === 0 && phone.value.trim().length === 0 && subject.value.trim().length === 0 && message.value.trim().length === 0) {
+          swal("Oops...","Please! Enter the credentials first .","error");
+          return false;
+        }
+        if (firstname.value.trim().length === 0) {
+          swal("Oops...","Please! Enter your first name .","error");
+          return false;
+        }
+        if (!firstname.value.trim().match(alphabets)) {
+          swal("Oops...","Please! Enter a valid first name.","error");
+          return false;
+        }
+        if (lastname.value.trim().length > 0) {
+          if (!lastname.value.trim().match(alphabets)) {
+            swal("Oops...","Please! Enter a valid last name.","error");
+            return false;
+          }
+        }
+        if (email.value.trim().length === 0) {
+          swal("Oops...","Please! Enter your email address.","error");
+          return false;
+        }
+        if (!email.value.trim().includes("@gmail.com")) {
+          swal("Oops...","Please! Enter a valid email address.","error");
+          return false;
+        }
+        if (phone.value.trim().length != 10 || isNaN(phone.value.trim())) {
+          swal("Oops...","Phone number should be 10 digits. ","error");
+          return false;
+        }
+        if (subject.value.trim().length === 0) {
+          swal("Oops...","Please! Enter the subject.","error");
+          return false;
+        }
+        if (message.value.trim().length === 0) {
+          swal("Oops...","Please! Enter the message.","error");
+          return false;
+        }
+        swal("Congrats!","Message was delivered successfully! Thanks for your Submission","success");
+        return true;
+      }
+
+      document.getElementById("submit-btn").addEventListener("click",validateForm);
+
+      function clearFunc() {
+        document.getElementById("firstname").value = "";
+        document.getElementById("lastname").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("phone").value = "";
+        document.getElementById("subject").value = "";
+        document.getElementById("message").value = "";
+      }
+
+    </script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+</body>
+
+</html>
