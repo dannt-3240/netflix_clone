@@ -1,0 +1,19 @@
+<div class="container-fluid">
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">List all movie</h1>
+
+    <video class="gdriveVideo" preload="auto" controls>
+      <source src="<%= @movie.video_link %>" type='video/mp4'>
+    </video>
+  </div>
+    <div class="form-group col-md-6">
+      <label for="inputCity">Movie image</label>
+      <% if @movie.poster.present? %>
+        <img src="<%= @movie.poster_image_link %>" alt="Movie Poster">
+      <% else %>
+        <p>No poster available</p>
+      <% end %>
+    </div>
+
+</div>
