@@ -18,5 +18,7 @@ module Cashflow
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.autoload_paths << Rails.root.join('lib')
+    require "#{Rails.root}/lib/google_drive/google_drive.rb"
   end
 end
