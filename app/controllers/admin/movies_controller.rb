@@ -1,4 +1,6 @@
 class Admin::MoviesController < Admin::AdminController
+  include MovieHelpers
+
   def new
     @movie = Movie.new
   end
@@ -15,12 +17,12 @@ class Admin::MoviesController < Admin::AdminController
     @movie = Movie.new movie_params
 
     if @movie.save
-      flash[:success] = t(".success")
+      flash[:success] = "Create movie success"
       # redirect_to admin_movie_path(@movie.id)
       redirect_to new_admin_movie_path
 
     else
-      flash.now[:danger] = t(".danger")
+      flash.now[:danger] = "Create movie errors"
       render :new
     end
   end
@@ -28,8 +30,9 @@ class Admin::MoviesController < Admin::AdminController
   private
 
   def movie_params
-    params.require(:movie).permit(:duration, :name, :release_year, :poster, :thumbnail, movie_video_attributes: [:video_url, :server_name, :server_order]).tap do |attr|
-      attr[:movie_video_attributes][:video_url] = get_video_url(attr[:movie_video_attributes][:video_url])
+    params.require(:movie).permit(:movie_type, :duration, :imdb, :description, :country, :name, :release_year, :poster, :thumbnail,
+      movie_video_attributes: [:video_url, :server_name, :server_order]).tap do |attr|
+      attr[:movie_video_attributes][:video_url] = get_video_url(attr[:movie_video_attributes][:video_url]) if attr[:movie_video_attributes][:video_url]
     end
   end
 

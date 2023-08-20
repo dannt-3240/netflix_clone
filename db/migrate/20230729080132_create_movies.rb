@@ -10,7 +10,6 @@ class CreateMovies < ActiveRecord::Migration[7.0]
       t.integer :duration
       t.string :country
       t.integer :release_year
-      t.string :video_url
       t.integer :rank, default: 0
       t.integer :movie_type, default: 0
 

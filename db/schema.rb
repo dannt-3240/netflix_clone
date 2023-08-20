@@ -114,7 +114,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_19_154829) do
     t.integer "duration"
     t.string "country"
     t.integer "release_year"
-    t.string "video_url"
     t.integer "rank", default: 0
     t.integer "movie_type", default: 0
     t.datetime "created_at", null: false
@@ -160,8 +159,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_19_154829) do
     t.string "title"
     t.integer "order"
     t.date "release_date"
-    t.integer "duration"
-    t.string "video_url"
     t.string "tv_season_title"
     t.integer "tv_seasion_order"
     t.datetime "created_at", null: false

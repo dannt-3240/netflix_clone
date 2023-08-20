@@ -8,8 +8,6 @@
 #  title            :string(255)
 #  order            :integer
 #  release_date     :date
-#  duration         :integer
-#  video_url        :string(255)
 #  tv_season_title  :string(255)
 #  tv_seasion_order :integer
 #  created_at       :datetime         not null

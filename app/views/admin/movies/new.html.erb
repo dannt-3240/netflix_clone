@@ -4,9 +4,10 @@
     <h1 class="h3 mb-0 text-gray-800">Create new movie</h1>
   </div>
   <%= form_for [:admin, @movie] do |f| %>
+    <%= render "shared/error_messages", object: f.object %>
     <div class="form-group">
       <label>MovieType</label>
-      <%= f.select :movie_type, options_for_select([["Single Movie", "single_movie"], ["TV Series", "tv_series"]]), {}, class: "form-control" %>
+      <%= f.select :movie_type, options_for_select(movie_type_options), {}, class: "form-control" %>
     </div>
 
     <div class="form-row">
@@ -14,17 +15,21 @@
         <label>Name</label>
         <%= f.text_field :name, class: "form-control", placeholder: "enter movie name here ..." %>
       </div>
-      <div class="form-group col-md-3">
+      <div class="form-group col-md-2">
         <label>Duration</label>
         <%= f.number_field :duration, class: "form-control", placeholder: "Duration" %>
       </div>
-      <div class="form-group col-md-3">
+      <div class="form-group col-md-2">
         <label>Release year</label>
         <%= f.text_field :release_year, class: "form-control", placeholder: "YYYY", pattern: "\\d{4}", title: "Please enter a valid year (YYYY)" %>
       </div>
+      <div class="form-group col-md-2">
+        <label>IMDB</label>
+        <%= f.text_field :imdb, class: "form-control" %>
+      </div>
     </div>
     <div class="form-row">
-      <div class="form-group col-md-6">
+      <div class="form-group col-md-4">
         <label>Actor</label>
         <select class="form-control">
           <option selected>Choose Actor</option>
@@ -40,17 +45,14 @@
           <option>Drama</option>
         </select>
       </div>
-      <div class="form-group col-md-2">
-        <label>IMDB</label>
-        <input type="text" class="form-control">
+      <div class="form-group col-md-4">
+        <label>Country</label>
+        <%= f.select :country, options_for_select(movie_country_options), {}, class: "form-control" %>
       </div>
     </div>
     <div class="form-group">
       <label>Description</label>
-      <textarea class="form-control" placeholder="Movie description here.."></textarea>
-      <div class="invalid-feedback">
-        Please enter a message in the textarea.
-      </div>
+      <%= f.text_area :description, class: "form-control", placeholder: "Movie description here.." %>
     </div>
 
     <div class="form-row">
@@ -70,7 +72,7 @@
           <%= mv_form.label :video_url %>
           <%= mv_form.file_field :video_url, class: "form-control" %>
           <%= mv_form.hidden_field :server_name, value: "videostream", class: "form-control" %>
-          <%= mv_form.hidden_field :video_url, value: 0, class: "form-control" %>
+          <%= mv_form.hidden_field :server_order, value: 0, class: "form-control" %>
         </div>
       <% end %>
     </div>
