@@ -4,7 +4,7 @@ class CreateNotifications < ActiveRecord::Migration[7.0]
       t.references :user
       t.string :content
       t.timestamp :send_time
-      t.boolean :readed
+      t.boolean :readed, default: false
 
       t.timestamps
     end
