@@ -6,7 +6,7 @@ class CreateReviews < ActiveRecord::Migration[7.0]
       t.string :title
       t.string :text
       t.date :post_date
-      t.integer :liked
+      t.integer :liked, default: 0
 
       t.timestamps
     end

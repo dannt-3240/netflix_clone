@@ -6,8 +6,6 @@ class CreateTvEpisodes < ActiveRecord::Migration[7.0]
       t.string :title
       t.integer :order
       t.date :release_date
-      t.integer :duration
-      t.string :video_url
       t.string :tv_season_title
       t.integer :tv_seasion_order
 

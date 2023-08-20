@@ -26,6 +26,9 @@
       <div id="content">
         <%= render "admin/layouts/header" %>
         <!-- Begin Page Content -->
+        <% flash.each do |message_type, message| %>
+          <div class="alert alert-<%= message_type %>"><%= message %></div>
+        <% end %>
         <%= yield %>
         <!-- End of Main Content -->
       </div>
@@ -60,7 +63,7 @@
           </div>
       </div>
   </div>
-  
+
   <!-- Bootstrap core JavaScript-->
   <script src="/assets/admin/jquery.min.js"></script>
   <script src="/assets/admin/bootstrap.bundle.min.js"></script>
