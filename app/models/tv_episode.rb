@@ -15,5 +15,6 @@
 #
 class TvEpisode < ApplicationRecord
   belongs_to :movie
-  has_many :movie_videos, as: :videoable
+  has_one :movie_video, as: :videoable, class_name: 'MovieVideo', dependent: :destroy
+
 end

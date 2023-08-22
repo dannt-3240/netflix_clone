@@ -35,11 +35,19 @@ class Movie < ApplicationRecord
   has_one_attached :thumbnail
 
   accepts_nested_attributes_for :movie_genres
-  accepts_nested_attributes_for :movie_genres
-  accepts_nested_attributes_for :movie_video
+  accepts_nested_attributes_for :movie_video, reject_if: :reject_tv_serires_movie
+  accepts_nested_attributes_for :tv_episodes
 
   validates :name, :description, :imdb, :duration, :release_year, :movie_type, :description, presence: true
-  validate :video_url_presence, if: :single_movie?
+  # validate :video_url_presence, if: :single_movie?
+
+  def reject_tv_serires_movie
+    self.tv_series?
+  end
+
+  def reject_single_movie
+    self.single_movie?
+  end
 
   def poster_image_link
     if poster.attached?

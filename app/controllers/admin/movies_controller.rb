@@ -1,5 +1,5 @@
 class Admin::MoviesController < Admin::AdminController
-  include MovieHelpers
+  include MovieHelper
 
   def new
     @movie = Movie.new
@@ -14,11 +14,14 @@ class Admin::MoviesController < Admin::AdminController
   end
 
   def create
-    @movie = Movie.new movie_params
+    @movie = Movie.new movie_params.merge(movie_type: "single_movie")
 
     if @movie.save
       flash[:success] = "Create movie success"
       # redirect_to admin_movie_path(@movie.id)
+
+      # move to job in future
+      @movie.movie_video.update video_url: get_video_url(movie_video_url_params)
       redirect_to new_admin_movie_path
 
     else
@@ -30,25 +33,13 @@ class Admin::MoviesController < Admin::AdminController
   private
 
   def movie_params
-    params.require(:movie).permit(:movie_type, :duration, :imdb, :description, :country, :name, :release_year, :poster, :thumbnail,
+    params.require(:movie).permit(:duration, :imdb, :description, :country, :name, :release_year, :poster, :thumbnail,
       movie_video_attributes: [:video_url, :server_name, :server_order]).tap do |attr|
-      attr[:movie_video_attributes][:video_url] = get_video_url(attr[:movie_video_attributes][:video_url]) if attr[:movie_video_attributes][:video_url]
+      attr[:movie_video_attributes][:video_url] = generate_unique_filename(attr[:movie_video_attributes][:video_url].original_filename) if attr[:movie_video_attributes][:video_url]
     end
   end
 
-  def get_video_url(file)
-    upload_info = {
-      title: generate_unique_filename(file.original_filename),
-      parent_ids: [{ id: '1cuBlSwFTsUMfdSMUGMN-5GFbgCNXLoQ7' }],
-      path: file.tempfile.path
-    }
-
-    upload_result = $drive.upload(upload_info)
-  end
-
-  def generate_unique_filename(original_filename)
-    random_string = SecureRandom.hex(8)
-    timestamp = Time.now.strftime('%Y%m%d%H%M%S')
-    "#{timestamp}_#{random_string}#{original_filename}"
+  def movie_video_url_params
+    params[:movie][:movie_video_attributes][:video_url]
   end
 end

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get "/home", to: "static_pages#home"
     resources :movies, only: %i[new create index show]
+    resources :tv_series, only: %i[new create index show]
   end
   get '/oauth2callback', to: 'sessions#set_google_drive_token'
 end

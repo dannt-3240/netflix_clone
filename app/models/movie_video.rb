@@ -13,4 +13,5 @@
 #
 class MovieVideo < ApplicationRecord
   belongs_to :videoable, polymorphic: true
+  validates :video_url, presence: true
 end
