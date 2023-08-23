@@ -3,11 +3,10 @@ class CreateTvEpisodes < ActiveRecord::Migration[7.0]
     create_table :tv_episodes do |t|
       t.references :movie
       t.string :name
-      t.string :title
-      t.integer :order
+      t.integer :order, default: 0
       t.date :release_date
       t.string :tv_season_title
-      t.integer :tv_seasion_order
+      t.integer :tv_seasion_order, default: 0
 
       t.timestamps
     end

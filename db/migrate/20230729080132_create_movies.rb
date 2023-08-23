@@ -4,9 +4,9 @@ class CreateMovies < ActiveRecord::Migration[7.0]
       t.string :name
       t.string :description
       t.float :imdb
-      t.float :rating
-      t.integer :liked
-      t.integer :watched
+      t.float :rating, default: 0
+      t.integer :liked, default: 0
+      t.integer :watched, default: 0
       t.integer :duration
       t.string :country
       t.integer :release_year

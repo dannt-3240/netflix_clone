@@ -17,4 +17,12 @@ class TvEpisode < ApplicationRecord
   belongs_to :movie
   has_one :movie_video, as: :videoable, class_name: 'MovieVideo', dependent: :destroy
 
+  accepts_nested_attributes_for :movie_video
+
+  validates :name, presence: true
+  validate :video_url_presence
+
+  def video_url_presence
+    errors.add(:movie_video, "must be present") if movie_video.blank?
+  end
 end

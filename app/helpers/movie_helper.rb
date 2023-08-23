@@ -33,4 +33,12 @@ module MovieHelper
     timestamp = Time.now.strftime('%Y%m%d%H%M%S')
     "#{timestamp}_#{random_string}#{original_filename}"
   end
+
+  def sub_tv_episodes_field form
+    sub_tv_episodes = form.object.tv_episodes.build
+    form.fields_for :tv_episodes, sub_tv_episodes,
+      child_index: "hello" do |builder|
+      render "tv_episode_fields", f: builder
+    end
+  end
 end

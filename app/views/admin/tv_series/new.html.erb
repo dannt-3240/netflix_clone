@@ -67,19 +67,18 @@
     </div>
 
     <div class="form-group">
-      <div id="tv_episodes">
+      <div class="tv_episodes">
         <h2>Create TV ep</h2>
-        <%= f.fields_for :tv_episodes do |ff| %>
-          <%= render 'tv_episode_fields', f: ff %>
+        <%= f.fields_for :tv_episodes do |builder| %>
+          <%= render 'tv_episode_fields', f: builder %>
         <% end %>
-        <div class="links">
-          <%= link_to_add_association 'add tv_episodes', f, :tv_episodes %>
-        </div>
       </div>
+      <%= link_to "Add Tv episodes", "#", id: "sub-field",
+            class: "btn btn-info prevent-load",
+            data: {field: sub_tv_episodes_field(f)} %>
     </div>
-
 
     <button type="submit" class="btn btn-primary">Create Movie</button>
   <% end %>
-  
+
 </div>

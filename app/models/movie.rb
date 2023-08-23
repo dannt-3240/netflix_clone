@@ -39,7 +39,9 @@ class Movie < ApplicationRecord
   accepts_nested_attributes_for :tv_episodes
 
   validates :name, :description, :imdb, :duration, :release_year, :movie_type, :description, presence: true
-  # validate :video_url_presence, if: :single_movie?
+  validate :video_url_presence, if: :single_movie?
+  validate :video_tv_episodes_presence, if: :tv_series?
+
 
   def reject_tv_serires_movie
     self.tv_series?
@@ -63,5 +65,9 @@ class Movie < ApplicationRecord
 
   def video_url_presence
     errors.add(:video_url, "must be present") if movie_video.video_url.blank?
+  end
+
+  def video_tv_episodes_presence
+    errors.add(:tv_episodes, "must be present") if tv_episodes.blank?
   end
 end
