@@ -6,9 +6,9 @@
 #  name         :string(255)
 #  description  :string(255)
 #  imdb         :float(24)
-#  rating       :float(24)
-#  liked        :integer
-#  watched      :integer
+#  rating       :float(24)        default(0.0)
+#  liked        :integer          default(0)
+#  watched      :integer          default(0)
 #  duration     :integer
 #  country      :string(255)
 #  release_year :integer
@@ -60,6 +60,8 @@ class Movie < ApplicationRecord
   end
 
   def video_link
+    return unless movie_video&.video_url
+
     $drive.get(movie_video.video_url).web_content_link
   end
 

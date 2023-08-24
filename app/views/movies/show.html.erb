@@ -17,18 +17,16 @@
           <div id="movie-full-info">
             <div class="movie-info-poster">
               <span>
-                <img itemprop="image"
-                  src="https://static.bunnycdn.ru/i/cache/images/1/14/14a0ea926aad5127db5e0ebfc5a9c3e9.jpg"
-                  alt="The Little Mermaid">
+                <%= display_image(@movie, :poster) %>
               </span>
             </div>
             <div class="info-data">
-              <h1 itemprop="name" class="info-title">The Little Mermaid</h1>
+              <h1 itemprop="name" class="info-title"><%= @movie.name %></h1>
               <div class="info-subtitle">
                 <span class="sub-quality mini-stt">HD</span>
                 <span class="sub-rating mini-stt">PG</span>
-                <span class="sub-imdb mini-stt">IMDb 7.2</span>
-                <span class="text-white">135 min</span>
+                <span class="sub-imdb mini-stt">IMDb <%= @movie.imdb %></span>
+                <span class="text-white"><%= @movie.duration %> min</span>
               </div>
               <div class="description cts-wrapper">
                 <div class="cts-block short" data-name="short">
@@ -151,12 +149,15 @@
             <div id="movie-player" class="no-player playable">
               <div class="movie-player-wrap">
                 <div
-                  class="player-bg https://static.bunnycdn.ru/i/cache/images/f/fd/fd26186908ecbc9c343d587893f8b47b.jpg"
-                  style="background-image: url(https://static.bunnycdn.ru/i/cache/images/f/fd/fd26186908ecbc9c343d587893f8b47b.jpg)">
+                  class="player-bg <%=get_image_url(@movie, :thumbnail)%>"
+                  style="background-image: url(<%=get_image_url(@movie, :thumbnail)%>)">
                 </div>
                 <div id="player">
                   <div class="btn-play"><i class="bi bi-play-fill"></i></div>
                 </div>
+                <video id="video-player" controls style="display: none;">
+                  <source id="video-source" src="<%= @movie.video_link %>" type="video/mp4">
+                </video>
               </div>
               <div id="movie-ctrls">
                 <div class="movie-ctrls-wrap">
@@ -320,3 +321,14 @@
       </div>
     </div>
 </body>
+<script>
+  const playButton = document.querySelector('.btn-play');
+  const videoPlayer = document.getElementById('video-player');
+  const videoSource = document.getElementById('video-source');
+
+  playButton.addEventListener('click', () => {
+    videoPlayer.style.display = 'block';
+    videoPlayer.play();
+    playButton.style.display = 'none';
+  });
+</script>

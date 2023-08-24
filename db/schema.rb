@@ -108,9 +108,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_19_154829) do
     t.string "name"
     t.string "description"
     t.float "imdb"
-    t.float "rating"
-    t.integer "liked"
-    t.integer "watched"
+    t.float "rating", default: 0.0
+    t.integer "liked", default: 0
+    t.integer "watched", default: 0
     t.integer "duration"
     t.string "country"
     t.integer "release_year"
@@ -156,11 +156,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_19_154829) do
   create_table "tv_episodes", charset: "utf8mb3", force: :cascade do |t|
     t.bigint "movie_id"
     t.string "name"
-    t.string "title"
-    t.integer "order"
+    t.integer "order", default: 0
     t.date "release_date"
     t.string "tv_season_title"
-    t.integer "tv_seasion_order"
+    t.integer "tv_seasion_order", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["movie_id"], name: "index_tv_episodes_on_movie_id"

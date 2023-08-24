@@ -24,7 +24,7 @@ class Admin::TvSeriesController < Admin::AdminController
   def movie_params
     params.require(:movie).permit(:duration, :imdb, :description, :country, :name, :release_year, :poster, :thumbnail,
       tv_episodes_attributes: [
-        :name, :release_date,
+        :name, :release_date, :tv_seasion_order,
         movie_video_attributes: [:video_url, :server_name, :server_order]
       ]
     )
@@ -51,7 +51,7 @@ class Admin::TvSeriesController < Admin::AdminController
 
   def update_video_url video_list
     video_list.each do |video|
-      
+
     end
   end
 end

@@ -1,13 +1,19 @@
 
 <div class="form-row">
   <div class="form-row col-md-11">
-    <div class="form-group col-md-6">
+    <div class="form-group col-md-4">
       <label>Episode Name</label>
       <%= f.text_field :name, class: "form-control" %>
     </div>
-    <div class="form-group col-md-6">
+
+    <div class="form-group col-md-4">
       <label>Episode relase date</label>
       <%= f.date_field :release_date, class: "form-control" %>
+    </div>
+
+    <div class="form-group col-md-4">
+      <label>Tv Season Number</label>
+      <%= f.select :tv_seasion_order, options_for_select(tv_seasion_order_options(@movie), f.object.tv_seasion_order), {}, class: "form-control", id: "tv_seasion_order_select" %>
     </div>
 
     <div class="form-group col-md-12">

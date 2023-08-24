@@ -9,6 +9,16 @@ module ApplicationHelper
     end
   end
 
+  def get_image_url(entity, image_type)
+    image = entity.send(image_type)
+
+    if image.attached?
+      Rails.application.routes.url_helpers.rails_blob_url(image)
+    else
+      default_image_path
+    end
+  end
+
   def default_image_path
     image_path('Images/bat.jpg')
   end

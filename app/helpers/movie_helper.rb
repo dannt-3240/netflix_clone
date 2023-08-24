@@ -18,6 +18,19 @@ module MovieHelper
     ]
   end
 
+  def tv_seasion_order_options movie
+    tv_seasion_order = TvEpisode.where(movie_id: movie.id).pluck(:order)
+    [
+      ["Season 1", 1],
+      ["Season 2", 2],
+      ["Season 3", 3],
+      ["Season 4", 4],
+      ["Season 5", 5],
+      ["Season 6", 6],
+      ["Add new season", "Other"]
+    ]
+  end
+
   def get_video_url(file)
     upload_info = {
       title: generate_unique_filename(file.original_filename),
