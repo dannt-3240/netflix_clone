@@ -5,3 +5,23 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+10.times do
+  Country.create(name: Faker::Address.country)
+end
+
+10.times do
+  Genre.create(name: Faker::Book.genre)
+end
+
+10.times do
+  Actor.create(name: Faker::Name.name)
+end
+
+10.times do
+  Director.create(name: Faker::Name.name)
+end
+
+10.times do
+  Production.create(name: Faker::Company.name)
+end

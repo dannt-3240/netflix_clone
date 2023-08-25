@@ -10,46 +10,40 @@
 #  liked        :integer          default(0)
 #  watched      :integer          default(0)
 #  duration     :integer
-#  country      :string(255)
 #  release_year :integer
 #  rank         :integer          default(0)
-#  movie_type   :integer          default("single_movie")
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #
 class Movie < ApplicationRecord
   enum movie_type: {single_movie: 0, tv_series: 1}
-  has_many :list
-  has_many :reviews
-  has_many :ratings
-  has_many :castings
-  has_many :user_movie_watchlists
-  has_many :movie_genres
+
+  has_many :castings, as: :castingable
+  has_many :list_items, as: :listable
+  has_many :reviews, as: :reviewable
+  has_many :user_movie_watchlists, as: :watchlistable
+  has_many :movie_genres, as: :genreable
+  has_many :ratings, as: :ratingable
+  has_many :movie_countries, as: :countryable
+  has_many :movie_directors, as: :directorable
+  has_many :movie_productions, as: :productionable
+
   has_many :genres, through: :movie_genres
   has_many :actors, through: :castings
-  has_many :list_items, through: :lists
-  has_many :tv_episodes
+  has_many :countries, through: :movie_countries
+  has_many :directors, through: :movie_directors
+  has_many :productions, through: :movie_productions
+
+
   has_one :movie_video, as: :videoable, class_name: 'MovieVideo', dependent: :destroy
 
   has_one_attached :poster
   has_one_attached :thumbnail
 
-  accepts_nested_attributes_for :movie_genres
-  accepts_nested_attributes_for :movie_video, reject_if: :reject_tv_serires_movie
-  accepts_nested_attributes_for :tv_episodes
+  accepts_nested_attributes_for :movie_video, reject_if: proc { |attributes| attributes[:video_url].blank? }
 
-  validates :name, :description, :imdb, :duration, :release_year, :movie_type, :description, presence: true
-  validate :video_url_presence, if: :single_movie?
-  validate :video_tv_episodes_presence, if: :tv_series?
-
-
-  def reject_tv_serires_movie
-    self.tv_series?
-  end
-
-  def reject_single_movie
-    self.single_movie?
-  end
+  # validates :name, :description, :imdb, :duration, :release_year, :movie_type, :description, presence: true
+  # validate :video_url_presence
 
   def poster_image_link
     if poster.attached?
@@ -67,9 +61,5 @@ class Movie < ApplicationRecord
 
   def video_url_presence
     errors.add(:video_url, "must be present") if movie_video.video_url.blank?
-  end
-
-  def video_tv_episodes_presence
-    errors.add(:tv_episodes, "must be present") if tv_episodes.blank?
   end
 end

@@ -1,11 +1,10 @@
 # == Schema Information
 #
-# Table name: genres
+# Table name: tv_series
 #
 #  id         :bigint           not null, primary key
-#  name       :string(255)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class Genre < ApplicationRecord
+class TvSeries < ApplicationRecord
 end

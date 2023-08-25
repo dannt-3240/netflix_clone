@@ -8,10 +8,8 @@ class CreateMovies < ActiveRecord::Migration[7.0]
       t.integer :liked, default: 0
       t.integer :watched, default: 0
       t.integer :duration
-      t.string :country
       t.integer :release_year
       t.integer :rank, default: 0
-      t.integer :movie_type, default: 0
 
       t.timestamps
     end

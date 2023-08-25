@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_19_154829) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_25_095039) do
   create_table "active_storage_attachments", charset: "utf8mb3", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -49,12 +49,29 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_19_154829) do
   end
 
   create_table "castings", charset: "utf8mb3", force: :cascade do |t|
-    t.bigint "movie_id"
+    t.string "castingable_type"
+    t.bigint "castingable_id"
     t.bigint "actor_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["actor_id"], name: "index_castings_on_actor_id"
-    t.index ["movie_id"], name: "index_castings_on_movie_id"
+    t.index ["castingable_type", "castingable_id"], name: "index_castings_on_castingable"
+  end
+
+  create_table "countries", charset: "utf8mb3", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "directors", charset: "utf8mb3", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.string "address"
+    t.date "birthday"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "genres", charset: "utf8mb3", force: :cascade do |t|
@@ -65,12 +82,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_19_154829) do
 
   create_table "list_items", charset: "utf8mb3", force: :cascade do |t|
     t.bigint "list_id"
-    t.bigint "movie_id"
+    t.string "itemable_type"
+    t.bigint "itemable_id"
     t.integer "order"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["itemable_type", "itemable_id"], name: "index_list_items_on_itemable"
     t.index ["list_id"], name: "index_list_items_on_list_id"
-    t.index ["movie_id"], name: "index_list_items_on_movie_id"
   end
 
   create_table "lists", charset: "utf8mb3", force: :cascade do |t|
@@ -84,21 +102,52 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_19_154829) do
     t.index ["user_id"], name: "index_lists_on_user_id"
   end
 
+  create_table "movie_countries", charset: "utf8mb3", force: :cascade do |t|
+    t.string "countryable_type"
+    t.bigint "countryable_id"
+    t.bigint "country_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["country_id"], name: "index_movie_countries_on_country_id"
+    t.index ["countryable_type", "countryable_id"], name: "index_movie_countries_on_countryable"
+  end
+
+  create_table "movie_directors", charset: "utf8mb3", force: :cascade do |t|
+    t.string "directorable_type"
+    t.bigint "directorable_id"
+    t.bigint "director_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["director_id"], name: "index_movie_directors_on_director_id"
+    t.index ["directorable_type", "directorable_id"], name: "index_movie_directors_on_directorable"
+  end
+
   create_table "movie_genres", charset: "utf8mb3", force: :cascade do |t|
-    t.bigint "movie_id"
+    t.string "genreable_type"
+    t.bigint "genreable_id"
     t.bigint "genre_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["genre_id"], name: "index_movie_genres_on_genre_id"
-    t.index ["movie_id"], name: "index_movie_genres_on_movie_id"
+    t.index ["genreable_type", "genreable_id"], name: "index_movie_genres_on_genreable"
+  end
+
+  create_table "movie_productions", charset: "utf8mb3", force: :cascade do |t|
+    t.string "productionable_type"
+    t.bigint "productionable_id"
+    t.bigint "production_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["production_id"], name: "index_movie_productions_on_production_id"
+    t.index ["productionable_type", "productionable_id"], name: "index_movie_productions_on_productionable"
   end
 
   create_table "movie_videos", charset: "utf8mb3", force: :cascade do |t|
     t.string "videoable_type"
     t.bigint "videoable_id"
     t.string "video_url"
-    t.string "server_name"
-    t.integer "server_order"
+    t.string "server_name", default: "vidstream"
+    t.integer "server_order", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["videoable_type", "videoable_id"], name: "index_movie_videos_on_videoable"
@@ -112,10 +161,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_19_154829) do
     t.integer "liked", default: 0
     t.integer "watched", default: 0
     t.integer "duration"
-    t.string "country"
     t.integer "release_year"
     t.integer "rank", default: 0
-    t.integer "movie_type", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -130,18 +177,27 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_19_154829) do
     t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
+  create_table "productions", charset: "utf8mb3", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "ratings", charset: "utf8mb3", force: :cascade do |t|
-    t.bigint "movie_id"
+    t.string "ratingable_type"
+    t.bigint "ratingable_id"
     t.bigint "user_id"
     t.integer "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["movie_id"], name: "index_ratings_on_movie_id"
+    t.index ["ratingable_type", "ratingable_id"], name: "index_ratings_on_ratingable"
     t.index ["user_id"], name: "index_ratings_on_user_id"
   end
 
   create_table "reviews", charset: "utf8mb3", force: :cascade do |t|
-    t.bigint "movie_id"
+    t.string "reviewable_type"
+    t.bigint "reviewable_id"
     t.bigint "user_id"
     t.string "title"
     t.string "text"
@@ -149,12 +205,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_19_154829) do
     t.integer "liked", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["movie_id"], name: "index_reviews_on_movie_id"
+    t.index ["reviewable_type", "reviewable_id"], name: "index_reviews_on_reviewable"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "tv_episodes", charset: "utf8mb3", force: :cascade do |t|
-    t.bigint "movie_id"
+    t.bigint "tv_serie_id"
     t.string "name"
     t.integer "order", default: 0
     t.date "release_date"
@@ -162,17 +218,23 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_19_154829) do
     t.integer "tv_seasion_order", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["movie_id"], name: "index_tv_episodes_on_movie_id"
+    t.index ["tv_serie_id"], name: "index_tv_episodes_on_tv_serie_id"
+  end
+
+  create_table "tv_series", charset: "utf8mb3", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "user_movie_watchlists", charset: "utf8mb3", force: :cascade do |t|
-    t.bigint "movie_id"
+    t.string "watchlistable_type"
+    t.bigint "watchlistable_id"
     t.bigint "user_id"
     t.integer "duration_watch"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["movie_id"], name: "index_user_movie_watchlists_on_movie_id"
     t.index ["user_id"], name: "index_user_movie_watchlists_on_user_id"
+    t.index ["watchlistable_type", "watchlistable_id"], name: "index_user_movie_watchlists_on_watchlistable"
   end
 
   create_table "users", charset: "utf8mb3", force: :cascade do |t|

@@ -3,7 +3,7 @@
 # Table name: tv_episodes
 #
 #  id               :bigint           not null, primary key
-#  movie_id         :bigint
+#  tv_serie_id      :bigint
 #  name             :string(255)
 #  order            :integer          default(0)
 #  release_date     :date
@@ -13,7 +13,7 @@
 #  updated_at       :datetime         not null
 #
 class TvEpisode < ApplicationRecord
-  belongs_to :movie
+  belongs_to :tv_serie
   has_one :movie_video, as: :videoable, class_name: 'MovieVideo', dependent: :destroy
 
   accepts_nested_attributes_for :movie_video

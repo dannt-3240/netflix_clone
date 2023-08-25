@@ -1,23 +1,4 @@
 module MovieHelper
-  def movie_type_options
-    [
-      ["Single Movie", "single_movie"],
-      ["TV Series", "tv_series"]
-    ]
-  end
-
-  def movie_country_options
-    [
-      ["Choose country", nil],
-      ["USA", "us"],
-      ["France", "fr"],
-      ["United Kingdom", "uk"],
-      ["China", "cn"],
-      ["Japan", "jp"],
-      ["Other", "other"]
-    ]
-  end
-
   def tv_seasion_order_options movie
     tv_seasion_order = TvEpisode.where(movie_id: movie.id).pluck(:order)
     [

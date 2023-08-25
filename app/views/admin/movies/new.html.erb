@@ -5,10 +5,6 @@
   </div>
   <%= form_for [:admin, @movie] do |f| %>
     <%= render "shared/error_messages", object: f.object %>
-    <div class="form-group">
-      <label>MovieType</label>
-      <input type="text" value="Single Movie" class="form-control" placeholder="enter movie name here ..." readonly>
-    </div>
 
     <div class="form-row">
       <div class="form-group col-md-6">
@@ -30,26 +26,30 @@
     </div>
     <div class="form-row">
       <div class="form-group col-md-4">
-        <label>Actor</label>
-        <select class="form-control">
-          <option selected>Choose Actor</option>
-          <option>Actor1</option>
-          <option>Actor2</option>
-        </select>
+        <label>Actors</label>
+        <%= f.select :actor_ids, Actor.all.pluck(:name, :id), {}, { multiple: true, class: "form-control" } %>
       </div>
       <div class="form-group col-md-4">
         <label>Genres</label>
-        <select class="form-control">
-          <option selected>Choose genres</option>
-          <option>Action</option>
-          <option>Drama</option>
-        </select>
+        <%= f.select :genre_ids, Genre.all.pluck(:name, :id), {}, { multiple: true, class: "form-control" } %>
       </div>
       <div class="form-group col-md-4">
-        <label>Country</label>
-        <%= f.select :country, options_for_select(movie_country_options), {}, class: "form-control" %>
+        <label>Countries</label>
+        <%= f.select :country_ids, Country.all.pluck(:name, :id), {}, { multiple: true, class: "form-control" } %>
       </div>
     </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>Directors</label>
+        <%= f.select :director_ids, Director.all.pluck(:name, :id), {}, { multiple: true, class: "form-control" } %>
+      </div>
+      <div class="form-group col-md-6">
+        <label>Productions</label>
+        <%= f.select :production_ids, Production.all.pluck(:name, :id), {}, { multiple: true, class: "form-control" } %>
+      </div>
+    </div>
+
     <div class="form-group">
       <label>Description</label>
       <%= f.text_area :description, class: "form-control", placeholder: "Movie description here.." %>
@@ -71,8 +71,6 @@
         <div class="form-group">
           <%= mv_form.label :video_url %>
           <%= mv_form.file_field :video_url, class: "form-control" %>
-          <%= mv_form.hidden_field :server_name, value: "videostream", class: "form-control" %>
-          <%= mv_form.hidden_field :server_order, value: 0, class: "form-control" %>
         </div>
       <% end %>
     </div>
