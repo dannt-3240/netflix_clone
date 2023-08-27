@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   root 'static_pages#home'
   resources :home, only: %i[index]
   resources :movies, only: %i[index show]
+  resources :tv_series, only: %i[index show]
   resources :web_series, only: %i[index]
   resources :premium, only: %i[index]
   resources :contact, only: %i[index]

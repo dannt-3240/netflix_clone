@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: movies
+# Table name: tv_series
 #
 #  id           :bigint           not null, primary key
 #  name         :string(255)
@@ -15,7 +15,7 @@
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #
-class Movie < ApplicationRecord
+class TvSerie < ApplicationRecord
   has_many :castings, as: :castingable
   has_many :list_items, as: :listable
   has_many :reviews, as: :reviewable
@@ -25,6 +25,7 @@ class Movie < ApplicationRecord
   has_many :movie_countries, as: :countryable
   has_many :movie_directors, as: :directorable
   has_many :movie_productions, as: :productionable
+  has_many :tv_episodes
 
   has_many :genres, through: :movie_genres
   has_many :actors, through: :castings
@@ -32,26 +33,9 @@ class Movie < ApplicationRecord
   has_many :directors, through: :movie_directors
   has_many :productions, through: :movie_productions
 
-
-  has_one :movie_video, as: :videoable, class_name: 'MovieVideo', dependent: :destroy
-
   has_one_attached :poster
   has_one_attached :thumbnail
+  
+  accepts_nested_attributes_for :tv_episodes
 
-  accepts_nested_attributes_for :movie_video, reject_if: proc { |attributes| attributes[:video_url].blank? }
-
-  # validates :name, :description, :imdb, :duration, :release_year, :movie_type, :description, presence: true
-  # validate :video_url_presence
-
-  def poster_image_link
-    if poster.attached?
-      Rails.application.routes.url_helpers.url_for(poster)
-    else
-      "assets/Images/msd.jpg" # Replace with the path to your default image
-    end
-  end
-
-  def video_url_presence
-    errors.add(:video_url, "must be present") if movie_video.video_url.blank?
-  end
 end

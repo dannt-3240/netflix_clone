@@ -1,0 +1,330 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'webStyle' %>
+<% end %>
+<body style="background-color:black;" color="height:auto;">
+  <div class="scroll-bar">
+    <div class="main-content">
+      <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="assets/Images/msd.jpg" height="400" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="assets/Images/YJHD cover.jpg" height="400" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="assets/Images/vlhta.jpg" height="400" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="assets/Images/Idiots.png" height="400" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="assets/Images/ckd.jpg" height="400" class="d-block w-100" alt="...">
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </a>
+      </div>
+
+    </div>
+    <div class="row poster">
+      <div class="container">
+        <div id="movies" class="row"></div>
+      </div>
+      <hr>
+      <div class="row">
+        <h3 class="section-title text-center">Popular</h3>
+      </div>
+      <div class="col">
+        <div class="card movie_card">
+          <img src="assets/Images/msdhoni.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">MS Dhoni</h5>
+            <span class="movie_info_rating"><i class="fas fa-star"></i>IMDb 8.5 / 10</span>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card movie_card">
+          <img src="assets/Images/ye jawani.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Yeh Jawani Hai Deewani</h5>
+            <span class="movie_info_rating"><i class="fas fa-star"></i>IMDb 9 / 10</span>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card movie_card">
+          <img src="assets/Images/Idiots.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">3 Idiots</h5>
+            <span class="movie_info_rating"><i class="fas fa-star"></i> IMDb 9 / 10</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card movie_card">
+          <img src="assets/Images/bb.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Bajrangi Bhaijan</h5>
+            <span class="movie_info_rating"><i class="fas fa-star"></i> IMDb 8.7 / 10</span>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card movie_card">
+          <img src="assets/Images/ppw.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Pati Patni Aur Woh</h5>
+            <span class="movie_info_rating"><i class="fas fa-star"></i>IMDb 9 / 10</span>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row poster">
+      <div class="row">
+        <h3 class="section-title text-center">Top Picks For You</h3>
+      </div>
+      <div class="col">
+        <div class="card movie_card">
+          <img src="assets/Images/holiday.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Holiday</h5>
+            <span class="movie_info_rating"><i class="fas fa-star"></i>IMDb 9 / 10</span>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card movie_card">
+          <img src="assets/Images/ett.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Ek Tha Tiger</h5>
+
+            <span class="movie_info_rating"><i class="fas fa-star"></i>IMDb 9 / 10</span>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card movie_card">
+          <img src="assets/Images/pdm.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Padmavati</h5>
+
+            <span class="movie_info_rating"><i class="fas fa-star"></i>IMDb 9 / 10</span>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card movie_card">
+          <img src="assets/Images/stoy.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Student Of The Year</h5>
+
+            <span class="movie_info_rating"><i class="fas fa-star"></i>IMDb 9 / 10</span>
+
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card movie_card">
+          <img src="assets/Images/race.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Race 2</h5>
+
+            <span class="movie_info_rating"><i class="fas fa-star"></i>IMDb 7.4 / 10</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="row poster">
+    <div class="row">
+      <h3 class="section-title text-center">Featured</h3>
+    </div>
+    <div class="col">
+      <div class="card movie_card">
+        <img src="assets/Images/aaam.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Andaz Apna Apna</h5>
+
+          <span class="movie_info_rating"><i class="fas fa-star"></i>IMDb 9 / 10</span>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card movie_card">
+        <img src="assets/Images/ckdm.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Chakde India</h5>
+
+          <span class="movie_info_rating"><i class="fas fa-star"></i>IMDb 9 / 10</span>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card movie_card">
+        <img src="assets/Images/bmb.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Bhag Milkha Bhag</h5>
+
+          <span class="movie_info_rating"><i class="fas fa-star"></i>IMDb 9 / 10</span>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card movie_card">
+        <img src="assets/Images/gow.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Gangs Of Wasseypur</h5>
+
+          <span class="movie_info_rating"><i class="fas fa-star"></i> IMDb 9 / 10</span>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card movie_card">
+        <img src="assets/Images/dsm.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Drishyam</h5>
+
+          <span class="movie_info_rating"><i class="fas fa-star"></i>IMDb 9 / 10</span>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  </div>
+
+  </div>
+  <div class="row poster">
+    <div class="row">
+      <h3 class="section-title text-center">Comedy</h3>
+    </div>
+    <div class="col">
+      <div class="card movie_card">
+        <img src="assets/Images/cc.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Chichore</h5>
+
+          <span class="movie_info_rating"><i class="fas fa-star"></i>IMDb 9 / 10</span>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card movie_card">
+        <img src="assets/Images/m.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Phir Hera Pheri</h5>
+
+          <span class="movie_info_rating"><i class="fas fa-star"></i>IMDb 9 / 10</span>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card movie_card">
+        <img src="assets/Images/gn.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Good Newwz</h5>
+          <span class="movie_info_rating"><i class="fas fa-star"></i>IMDb 9 / 10</span>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card movie_card">
+        <img src="assets/Images/welc.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Welcome</h5>
+
+          <span class="movie_info_rating"><i class="fas fa-star"></i> IMDb 9 / 10</span>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card movie_card">
+        <img src="assets/Images/golmaal.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Golmaal 3</h5>
+
+          <span class="movie_info_rating"><i class="fas fa-star"></i>IMDb 9 / 10</span>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+  <div class="row poster">
+    <div class="row">
+      <h3 class="section-title text-center">Romance</h3>
+    </div>
+    <div class="col">
+      <div class="card movie_card">
+        <img src="assets/Images/rl.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Goliyon ki Raasleela- Ram Leela</h5>
+
+          <span class="movie_info_rating"><i class="fas fa-star"></i>IMDb 9 / 10</span>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card movie_card">
+        <img src="assets/Images/ks.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Kabir Singh</h5>
+
+          <span class="movie_info_rating"><i class="fas fa-star"></i>IMDb 9 / 10</span>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card movie_card">
+        <img src="assets/Images/ts.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">2 States</h5>
+          <span class="movie_info_rating"><i class="fas fa-star"></i>IMDb 9 / 10</span>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card movie_card">
+        <img src="assets/Images/adhm.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Ae Dil Hai Mushkil</h5>
+
+          <span class="movie_info_rating"><i class="fas fa-star"></i> IMDb 9 / 10</span>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card movie_card">
+        <img src="assets/Images/stk.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Sanam Teri Kasam</h5>
+
+          <span class="movie_info_rating"><i class="fas fa-star"></i>IMDb 9 / 10</span>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+  <!-------------------------------Footer-------------------------------->
+</body>

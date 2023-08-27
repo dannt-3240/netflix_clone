@@ -39,7 +39,7 @@ class TvEpisode < ApplicationRecord
   end
 
   def generate_tv_episode_order
-    max_order = self.class.where(movie_id: movie_id, tv_seasion_order: tv_seasion_order).maximum(:order)
+    max_order = self.class.where(tv_serie: tv_serie_id, tv_seasion_order: tv_seasion_order).maximum(:order)
 
     self.order = max_order.to_i + 1
   end

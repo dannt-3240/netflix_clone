@@ -222,6 +222,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_25_095039) do
   end
 
   create_table "tv_series", charset: "utf8mb3", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.float "imdb"
+    t.float "rating", default: 0.0
+    t.integer "liked", default: 0
+    t.integer "watched", default: 0
+    t.integer "duration"
+    t.integer "release_year"
+    t.integer "rank", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

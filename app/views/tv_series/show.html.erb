@@ -17,25 +17,25 @@
           <div id="movie-full-info">
             <div class="movie-info-poster">
               <span>
-                <%= display_image(@movie, :poster) %>
+                <%= display_image(@tv_serie, :poster) %>
               </span>
             </div>
             <div class="info-data">
-              <h1 itemprop="name" class="info-title"><%= @movie.name %></h1>
+              <h1 itemprop="name" class="info-title"><%= @tv_serie.name %></h1>
               <div class="info-subtitle">
                 <span class="sub-quality mini-stt">HD</span>
                 <span class="sub-rating mini-stt">PG</span>
-                <span class="sub-imdb mini-stt">IMDb <%= @movie.imdb %></span>
-                <span class="text-white"><%= @movie.duration %> min</span>
+                <span class="sub-imdb mini-stt">IMDb <%= @tv_serie.imdb %></span>
+                <span class="text-white"><%= @tv_serie.duration %> min</span>
               </div>
               <div class="description cts-wrapper">
                 <div class="cts-block short" data-name="short">
-                  <div><%= truncate(@movie.description, length: 300) %></div> <button
+                  <div><%= truncate(@tv_serie.description, length: 300) %></div> <button
                     class="btn btn-sm btn-dark desc-btn mt-2 cts-switcher" data-target="full">view all <i
                       class="bi bi-arrow-right-short"></i></button>
                 </div>
                 <div class="cts-block" data-name="full" style="display:none">
-                  <div><%= @movie.description %></div> <button
+                  <div><%= @tv_serie.description %></div> <button
                     class="btn btn-sm btn-dark desc-btn mt-2 cts-switcher" data-target="short"><i
                       class="bi bi-arrow-left-short"></i> view less</button>
                 </div>
@@ -48,34 +48,34 @@
                 <div>
                   <div>Country:</div>
                   <span>
-                    <%= linked_items_list(@movie.countries, ->(name) { "/country/#{name}" }) %>
+                    <%= linked_items_list(@tv_serie.countries, ->(name) { "/country/#{name}" }) %>
                   </span>
                 </div>
                 <div>
                   <div>Genre:</div>
                   <span>
-                    <%= linked_items_list(@movie.genres, ->(name) { "/genre/#{name}" }) %>
+                    <%= linked_items_list(@tv_serie.genres, ->(name) { "/genre/#{name}" }) %>
                   </span>
                 </div>
                 <div>
-                  <div>Release:</div> <span itemprop="dateCreated"><%= @movie.release_year %></span>
+                  <div>Release:</div> <span itemprop="dateCreated"><%= @tv_serie.release_year %></span>
                 </div>
                 <div>
                   <div>Director:</div>
                   <span>
-                    <%= linked_items_list(@movie.directors, ->(name) { "/director/#{name}" }) %>
+                    <%= linked_items_list(@tv_serie.directors, ->(name) { "/director/#{name}" }) %>
                   </span>
                 </div>
                 <div>
                   <div>Production:</div>
                   <span>
-                    <%= linked_items_list(@movie.productions, ->(name) { "/production/#{name}" }) %>
+                    <%= linked_items_list(@tv_serie.productions, ->(name) { "/production/#{name}" }) %>
                   </span>
                 </div>
                 <div>
                   <div>Cast:</div>
                   <span>
-                    <%= linked_items_list(@movie.actors, ->(name) { "/actor/#{name}" }) %>
+                    <%= linked_items_list(@tv_serie.actors, ->(name) { "/actor/#{name}" }) %>
                   </span>
                 </div>
               </div>
@@ -139,15 +139,19 @@
             <div id="movie-player" class="no-player playable">
               <div class="movie-player-wrap">
                 <div
-                  class="player-bg <%=get_image_url(@movie, :thumbnail)%>"
-                  style="background-image: url(<%=get_image_url(@movie, :thumbnail)%>)">
+                  class="player-bg <%=get_image_url(@tv_serie, :thumbnail)%>"
+                  style="background-image: url(<%=get_image_url(@tv_serie, :thumbnail)%>)">
                 </div>
                 <div id="player">
                   <div class="btn-play"><i class="bi bi-play-fill"></i></div>
                 </div>
-                <video id="video-player" controls style="display: none;">
-                  <source id="video-source" src="<%= @movie&.movie_video&.video_link %>" type="video/mp4">
-                </video>
+                <% if false %>
+                  <video id="video-player" controls>
+                    <source id="video-source" src="<%= @tv_episode.movie_video.video_link %>" type="video/mp4">
+                  </video>
+                <% else %>
+                  <p>Video not available.</p>
+                <% end %>
               </div>
               <div id="movie-ctrls">
                 <div class="movie-ctrls-wrap">
@@ -223,12 +227,49 @@
               </div>
               <div id="movie-episode" class="movie">
                 <div class="episode-top">
-                  <div class="episode-top-title"><i class="bi bi-film"></i> Movie files</div>
+                <div class="episode-top-title dropdown-toggle" id="userDropdown" role="button" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">
+                  <i class="bi bi-film"></i> Movie files
                 </div>
+<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+        <a class="dropdown-item" href="#">
+          <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+          Profile
+        </a>
+        <a class="dropdown-item" href="#">
+          <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+          Settings
+        </a>
+        <a class="dropdown-item" href="#">
+          <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+          Activity Log
+        </a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+          <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+          Logout
+        </a>
+      </div>
+                </div>
+
+
                 <div class="episode-range" style="display: block" data-season="1">
                   <div> <a href="/movie/the-little-mermaid2-zk9wl/1-1" data-id="311406" data-num="1" data-slug="1"
                       title="Episode 1" class="active"> <span>Movie 1</span> </a> </div>
+                  <div> <a href="/movie/the-little-mermaid2-zk9wl/1-1" data-id="311406" data-num="1" data-slug="1"
+                      title="Episode 1" class="inactive"> <span>Movie 1</span> </a> </div>
+                  <div> <a href="/movie/the-little-mermaid2-zk9wl/1-1" data-id="311406" data-num="1" data-slug="1"
+                      title="Episode 1" class="inactive"> <span>Movie 1</span> </a> </div>
+                  <div> <a href="/movie/the-little-mermaid2-zk9wl/1-1" data-id="311406" data-num="1" data-slug="1"
+                      title="Episode 1" class="inactive"> <span>Movie 1</span> </a> </div>
+                  <div> <a href="/movie/the-little-mermaid2-zk9wl/1-1" data-id="311406" data-num="1" data-slug="1"
+                      title="Episode 1" class="inactive"> <span>Movie 1</span> </a> </div>
+                  <div> <a href="/movie/the-little-mermaid2-zk9wl/1-1" data-id="311406" data-num="1" data-slug="1"
+                      title="Episode 1" class="inactive"> <span>Movie 1</span> </a> </div>
+                  <div> <a href="/movie/the-little-mermaid2-zk9wl/1-1" data-id="311406" data-num="1" data-slug="1"
+                      title="Episode 1" class="inactive"> <span>Movie 1</span> </a> </div>
                 </div>
+
               </div>
             </div>
           </div>
@@ -313,3 +354,5 @@
 </body>
 
 <script src="/assets/movie.js"></script>
+  <script src="/assets/admin/jquery.min.js"></script>
+
