@@ -1,6 +1,6 @@
 module MovieHelper
-  def tv_seasion_order_options movie
-    tv_seasion_order = TvEpisode.where(movie_id: movie.id).pluck(:order)
+  def tv_seasion_order_options tv_serie
+    tv_seasion_order = TvEpisode.where(tv_serie_id: tv_serie.id).pluck(:order)
     [
       ["Season 1", 1],
       ["Season 2", 2],

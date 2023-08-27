@@ -25,9 +25,8 @@ class Admin::MoviesController < Admin::AdminController
       flash[:success] = "Create movie success"
 
       # move to job in future
-      @movie.movie_video.update video_url: get_video_url(movie_video_url_params) if movie_video_url_params
       redirect_to new_admin_movie_path
-
+      update_movie_video_url if movie_video_url_params
     else
       flash.now[:danger] = "Create movie errors"
       render :new
@@ -48,5 +47,9 @@ class Admin::MoviesController < Admin::AdminController
 
   def movie_video_url_params
     params.dig(:movie, :movie_video_attributes, :video_url)
+  end
+
+  def update_movie_video_url
+    @movie.movie_video.update(video_url: get_video_url(movie_video_url_params))
   end
 end

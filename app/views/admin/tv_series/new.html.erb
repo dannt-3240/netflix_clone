@@ -3,12 +3,8 @@
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800">Create new TV Series</h1>
   </div>
-  <%= form_for @movie, url: admin_tv_series_index_path, method: :post do |f| %>
+  <%= form_for @tv_serie, url: admin_tv_series_index_path, method: :post do |f| %>
     <%= render "shared/error_messages", object: f.object %>
-    <div class="form-group">
-      <label>MovieType</label>
-      <input type="text" value="TV Series" class="form-control" placeholder="enter movie name here ..." readonly>
-    </div>
 
     <div class="form-row">
       <div class="form-group col-md-6">
@@ -30,24 +26,27 @@
     </div>
     <div class="form-row">
       <div class="form-group col-md-4">
-        <label>Actor</label>
-        <select class="form-control">
-          <option selected>Choose Actor</option>
-          <option>Actor1</option>
-          <option>Actor2</option>
-        </select>
+        <label>Actors</label>
+        <%= f.select :actor_ids, Actor.all.pluck(:name, :id), {}, { multiple: true, class: "form-control" } %>
       </div>
       <div class="form-group col-md-4">
         <label>Genres</label>
-        <select class="form-control">
-          <option selected>Choose genres</option>
-          <option>Action</option>
-          <option>Drama</option>
-        </select>
+        <%= f.select :genre_ids, Genre.all.pluck(:name, :id), {}, { multiple: true, class: "form-control" } %>
       </div>
       <div class="form-group col-md-4">
-        <label>Country</label>
-        <%= f.select :country, options_for_select(movie_country_options), {}, class: "form-control" %>
+        <label>Countries</label>
+        <%= f.select :country_ids, Country.all.pluck(:name, :id), {}, { multiple: true, class: "form-control" } %>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>Directors</label>
+        <%= f.select :director_ids, Director.all.pluck(:name, :id), {}, { multiple: true, class: "form-control" } %>
+      </div>
+      <div class="form-group col-md-6">
+        <label>Productions</label>
+        <%= f.select :production_ids, Production.all.pluck(:name, :id), {}, { multiple: true, class: "form-control" } %>
       </div>
     </div>
     <div class="form-group">

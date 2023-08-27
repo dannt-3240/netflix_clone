@@ -22,4 +22,12 @@ module ApplicationHelper
   def default_image_path
     image_path('Images/bat.jpg')
   end
+
+  def linked_items_list(items, link_path)
+    items.map.with_index do |item, index|
+      link = link_to(item.name, link_path.call(item.name), title: "#{item.name} Movies, TV-Shows")
+      link += ',' unless index == items.size - 1
+      link
+    end.join(' ').html_safe
+  end
 end

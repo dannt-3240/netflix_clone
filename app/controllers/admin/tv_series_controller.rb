@@ -2,17 +2,26 @@ class Admin::TvSeriesController < Admin::AdminController
   include MovieHelper
 
   def new
-    @movie = Movie.new
-    @movie.tv_episodes.build
+    @tv_serie = TvSerie.new
+
+    # binding.pry
+
+    @tv_serie.tv_episodes.build
   end
 
   def create
-    @movie = Movie.new build_params.merge(movie_type: "tv_series")
-    if @movie.save
-      update_video_url(@video_list)
-      flash[:success] = "Create tv series success"
+    # binding.pry
+    @tv_serie = TvSerie.new build_params
+    if @tv_serie.save
+      @tv_serie.countries << Country.where(id: params[:tv_serie][:country_ids])
+      @tv_serie.actors << Actor.where(id: params[:tv_serie][:actor_ids])
+      @tv_serie.genres << Genre.where(id: params[:tv_serie][:genre_ids])
+      @tv_serie.directors << Director.where(id: params[:tv_serie][:director_ids])
+      @tv_serie.productions << Production.where(id: params[:tv_serie][:production_ids])
 
+      flash[:success] = "Create tv series success"
       redirect_to new_admin_tv_series_path
+      update_video_url(@video_list)
     else
       flash.now[:danger] = "Create tv series errors"
       render :new
@@ -21,8 +30,8 @@ class Admin::TvSeriesController < Admin::AdminController
 
   private
 
-  def movie_params
-    params.require(:movie).permit(:duration, :imdb, :description, :country, :name, :release_year, :poster, :thumbnail,
+  def tv_serie_params
+    params.require(:tv_serie).permit(:duration, :imdb, :description, :country, :name, :release_year, :poster, :thumbnail,
       tv_episodes_attributes: [
         :name, :release_date, :tv_seasion_order,
         movie_video_attributes: [:video_url, :server_name, :server_order]
@@ -32,7 +41,7 @@ class Admin::TvSeriesController < Admin::AdminController
 
   def build_params
     @video_list = []
-    movie_params.tap do |param|
+    tv_serie_params.tap do |param|
       param[:tv_episodes_attributes] = param[:tv_episodes_attributes].values.map do |tv_episode|
         if tv_episode[:movie_video_attributes] && tv_episode[:movie_video_attributes][:video_url]
           original_file = tv_episode[:movie_video_attributes][:video_url]
@@ -45,13 +54,10 @@ class Admin::TvSeriesController < Admin::AdminController
     end
   end
 
-  def movie_video_url_params
-    params[:movie][:tv_episodes_attributes][:movie_video_attributes][:video_url]
+  def tv_serie_video_url_params
+    params[:tv_serie][:tv_episodes_attributes][:tv_serie_video_attributes][:video_url]
   end
 
   def update_video_url video_list
-    video_list.each do |video|
-
-    end
   end
 end
