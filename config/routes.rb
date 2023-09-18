@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
@@ -9,8 +10,8 @@ Rails.application.routes.draw do
   resources :web_series, only: %i[index]
   resources :premium, only: %i[index]
   resources :contact, only: %i[index]
-  get "/login", to: "users#login"
-  get "/signup", to: "users#signup"
+  # get "/login", to: "users#login"
+  # get "/signup", to: "users#signup"
   namespace :admin do
     get "/home", to: "static_pages#home"
     resources :movies, only: %i[new create index show]
