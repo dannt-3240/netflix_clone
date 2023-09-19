@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :web_series, only: %i[index]
   resources :premium, only: %i[index]
   resources :contact, only: %i[index]
+  # get '/users/sign_out' => 'devise/sessions#destroy'
   # get "/login", to: "users#login"
   # get "/signup", to: "users#signup"
   namespace :admin do

@@ -6,4 +6,8 @@ class ApplicationController < ActionController::Base
       redirect_to('/oauth2callback')
     end
   end
+
+  def after_sign_in_path_for(resource)
+    stored_location_for(resource) || home_index_path
+  end
 end
