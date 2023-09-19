@@ -8,6 +8,10 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    stored_location_for(resource) || home_index_path
+    if resource.admin?
+      new_admin_movie_path
+    else
+      home_index_path
+    end
   end
 end

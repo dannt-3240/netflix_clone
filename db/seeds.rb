@@ -25,3 +25,6 @@ end
 10.times do
   Production.create(name: Faker::Company.name)
 end
+
+User.create(username: "normaluser", email: "normaluser@gmail.com", password: "123456", role: "user")
+User.create(username: "adminuser", email: "adminuser@gmail.com", password: "123456", role: "admin")
