@@ -45,7 +45,7 @@ class Admin::TvSeriesController < Admin::AdminController
       param[:tv_episodes_attributes] = param[:tv_episodes_attributes].values.map do |tv_episode|
         if tv_episode[:movie_video_attributes] && tv_episode[:movie_video_attributes][:video_url]
           original_file = tv_episode[:movie_video_attributes][:video_url]
-          unique_filename = generate_unique_filename(original_file.original_filename)
+          unique_filename = $drive.generate_unique_filename(original_file.original_filename)
           tv_episode[:movie_video_attributes][:video_url] = unique_filename
           @video_list << {video_file: original_file, movie_video_path: unique_filename}
         end
@@ -59,5 +59,11 @@ class Admin::TvSeriesController < Admin::AdminController
   end
 
   def update_video_url video_list
+    video_list.each do |video|
+      movie_video = MovieVideo.find_by video_url: video[:movie_video_path]
+      next unless movie_video
+
+      movie_video.update!(video_url: $drive.get_video_url(video[:video_file]))
+    end
   end
 end

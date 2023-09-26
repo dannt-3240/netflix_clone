@@ -41,7 +41,7 @@ class Admin::MoviesController < Admin::AdminController
       movie_video_attributes: [:video_url, :server_name, :server_order],
       ).tap do |attr|
         video_url = attr.dig(:movie_video_attributes, :video_url)
-        attr[:movie_video_attributes][:video_url] = generate_unique_filename(video_url.original_filename) if video_url.present?
+        attr[:movie_video_attributes][:video_url] = $drive.generate_unique_filename(video_url.original_filename) if video_url.present?
     end
   end
 
@@ -50,6 +50,6 @@ class Admin::MoviesController < Admin::AdminController
   end
 
   def update_movie_video_url
-    @movie.movie_video.update(video_url: get_video_url(movie_video_url_params))
+    @movie.movie_video.update(video_url: $drive.get_video_url(movie_video_url_params))
   end
 end

@@ -75,4 +75,20 @@ class MyDrive
   def list_children_files(parent_id, options = {})
     @drive.list_children(parent_id, options: options).items
   end
+
+  def get_video_url(file)
+    upload_info = {
+      title: generate_unique_filename(file.original_filename),
+      parent_ids: [{ id: '1cuBlSwFTsUMfdSMUGMN-5GFbgCNXLoQ7' }],
+      path: file.tempfile.path
+    }
+
+    upload_result = $drive.upload(upload_info)
+  end
+
+  def generate_unique_filename(original_filename)
+    random_string = SecureRandom.hex(8)
+    timestamp = Time.now.strftime('%Y%m%d%H%M%S')
+    "#{timestamp}_#{random_string}#{original_filename}"
+  end
 end
