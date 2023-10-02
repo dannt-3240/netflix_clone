@@ -215,7 +215,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_25_095039) do
     t.integer "order", default: 0
     t.date "release_date"
     t.string "tv_season_title"
-    t.integer "tv_seasion_order", default: 0
+    t.integer "tv_season_order", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["tv_serie_id"], name: "index_tv_episodes_on_tv_serie_id"

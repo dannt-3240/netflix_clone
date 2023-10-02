@@ -6,7 +6,7 @@ class CreateTvEpisodes < ActiveRecord::Migration[7.0]
       t.integer :order, default: 0
       t.date :release_date
       t.string :tv_season_title
-      t.integer :tv_seasion_order, default: 0
+      t.integer :tv_season_order, default: 0
 
       t.timestamps
     end

@@ -33,7 +33,7 @@ class Admin::TvSeriesController < Admin::AdminController
   def tv_serie_params
     params.require(:tv_serie).permit(:duration, :imdb, :description, :country, :name, :release_year, :poster, :thumbnail,
       tv_episodes_attributes: [
-        :name, :release_date, :tv_seasion_order,
+        :name, :release_date, :tv_season_order,
         movie_video_attributes: [:video_url, :server_name, :server_order]
       ]
     )

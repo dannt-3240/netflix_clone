@@ -8,7 +8,7 @@
 #  order            :integer          default(0)
 #  release_date     :date
 #  tv_season_title  :string(255)
-#  tv_seasion_order :integer          default(0)
+#  tv_season_order :integer          default(0)
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #
@@ -35,11 +35,11 @@ class TvEpisode < ApplicationRecord
   def generate_tv_season_title
     return if tv_season_title.present?
 
-    self.tv_season_title = "Season #{tv_seasion_order}"
+    self.tv_season_title = "Season #{tv_season_order}"
   end
 
   def generate_tv_episode_order
-    max_order = self.class.where(tv_serie: tv_serie_id, tv_seasion_order: tv_seasion_order).maximum(:order)
+    max_order = self.class.where(tv_serie: tv_serie_id, tv_season_order: tv_season_order).maximum(:order)
 
     self.order = max_order.to_i + 1
   end

@@ -1,6 +1,6 @@
 module MovieHelper
-  def tv_seasion_order_options tv_serie
-    tv_seasion_order = TvEpisode.where(tv_serie_id: tv_serie.id).pluck(:order)
+  def tv_season_order_options tv_serie
+    tv_season_order = TvEpisode.where(tv_serie_id: tv_serie.id).pluck(:order)
     [
       ["Season 1", 1],
       ["Season 2", 2],
@@ -10,6 +10,10 @@ module MovieHelper
       ["Season 6", 6],
       ["Add new season", "Other"]
     ]
+  end
+
+  def tv_season_options tv_serie
+    tv_seasion_name = TvEpisode.where(tv_serie_id: tv_serie.id).order(:tv_season_order).pluck(:tv_season_title, :tv_season_order).uniq
   end
 
   def sub_tv_episodes_field form

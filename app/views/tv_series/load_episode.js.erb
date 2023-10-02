@@ -1,0 +1,5 @@
+// load_episode.js.erb
+var episodeName = '<%= j @tv_episode.name %>';
+// Update the DOM to reflect the selected episode
+// For example, you can update a div with id "selected-episode" to display the episode name
+document.getElementById('selected-episode').innerText = 'Selected Episode: ' + episodeName;
