@@ -57,6 +57,35 @@ services:
   redis:
     image: redis:4.0-alpine
 
+  es:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.5.0
+    environment:
+      - node.name=es
+      - cluster.name=cluster
+      - discovery.seed_hosts=es
+      - bootstrap.memory_lock=true
+      - discovery.type=single-node
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+      - http.port=9200
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - es:/usr/share/elasticsearch/data
+    restart: always
+    ports:
+      - 9200:9200
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.5.0
+    environment:
+      - ELASTICSEARCH_HOSTS=http://es:9200
+    depends_on:
+      - es
+    ports:
+      - 5601:5601
+
   mailcatcher:
     image: dockage/mailcatcher:0.8.2
     ports:
@@ -65,3 +94,4 @@ services:
 
 volumes:
   db_data:
+  es:

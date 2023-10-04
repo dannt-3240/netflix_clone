@@ -16,6 +16,7 @@
 #  updated_at   :datetime         not null
 #
 class TvSerie < ApplicationRecord
+  include Searchable
   has_many :castings, as: :castingable
   has_many :list_items, as: :listable
   has_many :reviews, as: :reviewable
@@ -35,7 +36,6 @@ class TvSerie < ApplicationRecord
 
   has_one_attached :poster
   has_one_attached :thumbnail
-  
-  accepts_nested_attributes_for :tv_episodes
 
+  accepts_nested_attributes_for :tv_episodes
 end

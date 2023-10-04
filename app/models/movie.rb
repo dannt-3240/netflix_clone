@@ -16,6 +16,8 @@
 #  updated_at   :datetime         not null
 #
 class Movie < ApplicationRecord
+  include Searchable
+
   has_many :castings, as: :castingable
   has_many :list_items, as: :listable
   has_many :reviews, as: :reviewable
@@ -55,3 +57,4 @@ class Movie < ApplicationRecord
     errors.add(:video_url, "must be present") if movie_video.video_url.blank?
   end
 end
+Movie.import
